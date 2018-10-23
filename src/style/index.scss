@@ -1,0 +1,126 @@
+ // 路由动画
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  position: absolute;
+  width: 100%;
+  will-change: transform;
+  transition: all 0.8s;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+/* 面包屑导航 */
+.breadcrumb {
+  padding: 15px 10px 5px 10px;
+  font-size: 12px;
+
+  .el-breadcrumb{
+    font-size: 13px;
+  }
+}
+
+/* 查询条件部分 */
+.searchPart {
+  padding: 15px 0;
+
+  .el-date-editor, .el-select {
+    width: 100%!important;
+  }
+}
+
+/* 数据表格部分 */
+.tablePart{
+  .row-bg-gray th {
+    background: #f4f4f5 !important;
+  }
+}
+
+/* 修改Rtable 分页栏的位置 */
+.el-pagination {
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* 加粗显示数据 */
+.detail {
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+/* 字段标题 */
+.lbl{
+  font-size: 14px;
+  padding: 0 10px;
+  color: #222;
+}
+
+/* 预览图片按钮 */
+.reviewImg {
+  margin-top: 10px!important;
+  width: 300px;
+}
+
+/* 人工输入图片地址 */
+.customerPath{
+  margin-top: 10px;
+  width: 300px!important;
+}
+
+/* 上传图片 */
+.uploader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 150px;
+  border: 1px dashed #999;
+  border-radius: 6px;
+
+  .uploader-icon {
+    display: block;
+    height: 150px;
+    width: 300px;
+    line-height: 150px;
+    font-size: 26px;
+    color: #666;
+  }
+
+  .uploader-img {
+    display: block;
+    max-width: 300px;
+    max-height: 150px;
+  }
+}
+
+/* 兼容手机端 */
+@media screen and (max-width: 768px) {
+  .el-col{
+    margin-bottom: 5px;
+  }
+  .el-button + .el-button {
+    margin-left: 5px;
+  }
+
+  .el-pagination {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
