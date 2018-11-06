@@ -8,6 +8,7 @@ import Element from "element-ui";
 import "./style/theme.scss";
 import "./style/index.scss";
 import Axios from "@/server";
+import Jsonp from "@/server/jsonp";
 import Filters from "@/filters";
 import webStorage from "@/helpers/webStorageHelper";
 
@@ -17,6 +18,8 @@ Vue.config.productionTip = false;
 Vue.use(Element, { size: "small" });
 // 引用Ajax库
 Vue.use(Axios);
+// 引用Jsonp库
+Vue.use(Jsonp);
 // 引用管道函数
 Vue.use(Filters);
 

@@ -1,19 +1,26 @@
 # vue-admin
 
-使用 Vue CLI 3.0 构建的企业级管理后台项目快速开发原型, 持续维护中
+基于 Vue CLI 3.0 的企业级管理后台项目快速开发原型，简单、实用，不过度设计。
 
-## 如何启动
+### 如何启动
 
-- yarn // 安装依赖
-- yarn serve // 启动项目
-- http://localhost:8080 // 访问
+- yarn install
+- yarn serve
 
-## 相关技术
+### 相关技术
 
-- vue.js
+- vue
 - vue-router
 - vuex
+- sass
 - fontawesome
 - element-ui
 - axios
-- sass
+- jsonp
+- echarts
+
+### TODO
+
+- 服务端渲染
+- 所见即所得编辑器
+- 地图
