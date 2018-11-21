@@ -18,9 +18,8 @@
 - axios
 - jsonp
 - echarts
-
+- wangeditor
 ### TODO
 
 - 服务端渲染
-- 所见即所得编辑器
 - 地图
