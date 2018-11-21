@@ -1,11 +1,11 @@
 <template>
   <el-row class="dashboard">
     <!-- 切换平台 -->
-    <el-tabs class="" v-model="activeChanel" @tab-click="handleClickTab">
+    <el-tabs class="" v-model="activeChanel" @tab-click="handleSearch">
       <el-tab-pane label="全平台" name="all"></el-tab-pane>
-      <el-tab-pane label="渠道1" name="weibo1"></el-tab-pane>
-      <el-tab-pane label="渠道2" name="weibo2"></el-tab-pane>
-      <el-tab-pane label="渠道3" name="douyin"></el-tab-pane>
+      <el-tab-pane label="渠道A" name="a"></el-tab-pane>
+      <el-tab-pane label="渠道B" name="b"></el-tab-pane>
+      <el-tab-pane label="渠道C" name="c"></el-tab-pane>
     </el-tabs>
 
     <!-- 今日消耗 -->
@@ -28,7 +28,7 @@
     <!-- 日期选择 -->
     <el-row :gutter="20" class="dateRange">
       <el-col :sm="24" :md="6">
-        <el-date-picker v-model="selectedDate" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions">
+        <el-date-picker v-model="selectedDate" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions" @change="handleSearch">
         </el-date-picker>
       </el-col>
       <el-col :sm="24" :md="6">
@@ -99,11 +99,8 @@ export default {
     ...mapGetters(["themeColor"])
   },
   methods: {
-    // 切换渠道
-    handleClickTab() {},
     // 搜索
     handleSearch() {
-      // TODO: 依据activeChanel 和  selectedDate查询数据
       const data = {
         date: [
           "2018-04-21",

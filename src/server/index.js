@@ -9,6 +9,7 @@ const Axios = axios.create({
   responseType: "json"
 });
 
+// 请求发起阶段
 Axios.interceptors.request.use(
   config => {
     if (config.method === "post") {
@@ -26,6 +27,7 @@ Axios.interceptors.request.use(
   }
 );
 
+// 请求响应阶段
 Axios.interceptors.response.use(
   res => {
     switch (res.data.code) {

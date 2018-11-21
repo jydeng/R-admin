@@ -1,7 +1,7 @@
 <template>
   <el-row class="wrapper">
     <el-col :md="12" class="left">
-      <h2 class="title">Vue-admin</h2>
+      <h2 class="title">vue-admin</h2>
     </el-col>
     <el-col :md="12" class="right">
       <el-input placeholder="请输入你的账号" clearable prefix-icon="fa fa-fw fa-user" v-model="user.username"></el-input>

@@ -2,8 +2,8 @@
   <el-container class="wrapper">
     <!-- 顶部 -->
     <el-header>
-      <a href="." class="logo" title="Vue-admin">
-        <img src="@/assets/logo.png" alt="veda">
+      <a href="." class="logo" title="vue-admin">
+        <img src="@/assets/logo.png" alt="logo">
       </a>
       <a href="javascript:void(0)" class="toggle" title="菜单切换" @click="asideToggle">
         <i class="fa fa-th-list"></i>
@@ -114,6 +114,18 @@ export default {
           id: "1",
           name: "首页",
           url: "/Dashboard"
+        },
+        {
+          icon: "fa fa-fw fa-table",
+          id: "2",
+          name: "表格",
+          url: "/Table"
+        },
+        {
+          icon: "fa fa-fw fa-pencil",
+          id: "3",
+          name: "编辑器",
+          url: "/Editor"
         }
       ]);
     }
@@ -240,6 +252,7 @@ export default {
     margin: 10px;
     padding: 0 10px 10px 10px;
     background: #fff;
+    overflow-x: hidden;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
 }
