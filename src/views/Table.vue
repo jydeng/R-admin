@@ -37,20 +37,13 @@
   </el-row>
 </template>
 <script>
-import Rtable from "@/common/Rtable";
-import Rbreadcrumb from "@/common/Rbreadcrumb";
-import { dateShortcuts } from "@/helpers/elementHelper";
 export default {
   name: "Table",
-  components: {
-    Rtable,
-    Rbreadcrumb
-  },
   data() {
     return {
       selectedDate: ["", ""],
       pickerOptions: {
-        shortcuts: dateShortcuts,
+        shortcuts: this.elementHelper.dateShortcuts,
         disabledDate(date) {
           return date.getTime() > new Date().getTime();
         }

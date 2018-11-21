@@ -19,17 +19,17 @@ const router = new Router({
         {
           path: "/Dashboard",
           name: "Dashboard",
-          component: resolve => require(["@/components/Dashboard.vue"], resolve)
+          component: resolve => require(["@/views/Dashboard.vue"], resolve)
         },
         {
           path: "Table",
           name: "Table",
-          component: resolve => require(["@/components/Table.vue"], resolve)
+          component: resolve => require(["@/views/Table.vue"], resolve)
         },
         {
           path: "Editor",
           name: "Editor",
-          component: resolve => require(["@/components/Editor.vue"], resolve)
+          component: resolve => require(["@/views/Editor.vue"], resolve)
         }
       ]
     },

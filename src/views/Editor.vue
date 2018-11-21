@@ -13,12 +13,8 @@
 </template>
 <script>
 import E from "wangeditor";
-import Rbreadcrumb from "@/common/Rbreadcrumb";
 export default {
   name: "Editor",
-  components: {
-    Rbreadcrumb
-  },
   data() {
     return {
       editor: null,

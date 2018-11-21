@@ -56,8 +56,4 @@ Axios.interceptors.response.use(
   }
 );
 
-export default {
-  install: Vue => {
-    Object.defineProperty(Vue.prototype, "$http", { value: Axios });
-  }
-};
+export default Axios;

@@ -64,4 +64,4 @@ const gLengthValidator = function(length, message) {
   };
 };
 
-export { dateShortcuts, gLengthValidator };
+export default { dateShortcuts, gLengthValidator };

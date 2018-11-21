@@ -1,3 +1,6 @@
+import "./style/theme.scss";
+import "./style/index.scss";
+
 import Vue from "vue";
 import App from "./App.vue";
 
@@ -5,29 +8,36 @@ import router from "./router";
 import store from "./store";
 
 import Element from "element-ui";
-import "./style/theme.scss";
-import "./style/index.scss";
-import Axios from "@/server";
-import Jsonp from "@/server/jsonp";
-import Filters from "@/filters";
-import webStorage from "@/helpers/webStorageHelper";
+
+import R from "./components";
+import Ajax from "./ajax";
+import Filters from "./filters";
+import Helper from "./helper";
 
 // 生产环境不发出提示
 Vue.config.productionTip = false;
+
 // 引用elementUI
 Vue.use(Element, { size: "small" });
+
+// 引用自定义组件
+Vue.use(R);
+
 // 引用Ajax库
-Vue.use(Axios);
-// 引用Jsonp库
-Vue.use(Jsonp);
+Vue.use(Ajax);
+
 // 引用管道函数
 Vue.use(Filters);
 
-// 尝试从本地存储恢复状态
-const storageInfo = webStorage.read("state");
-// 本地存储的状态是否有效
-const validInfo = storageInfo && storageInfo["user"];
-if (validInfo) {
+// 引用帮助函数
+Vue.use(Helper);
+
+/** 自动登录Begin **/
+
+// 从本地存储恢复状态,页面退出时将状态写入webStorage
+const storageInfo = Vue.prototype.webStorageHelper.read("state");
+// 判断状态是否有效
+if (storageInfo && storageInfo["user"]) {
   store.dispatch("login", {
     user: {
       username: storageInfo.user.username,
@@ -37,6 +47,8 @@ if (validInfo) {
   store.dispatch("setmenu", storageInfo.menu);
   store.dispatch("changeThemeColor", storageInfo.themeColor);
 }
+
+/** 自动登录End **/
 
 // 全局路由守卫
 // 身份验证 & 访问区域验证
@@ -69,6 +81,7 @@ router.beforeEach((to, form, next) => {
   next();
 });
 
+// 初始化Vue组件并挂载到DOM
 new Vue({
   router,
   store,

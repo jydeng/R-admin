@@ -54,7 +54,6 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import Rtheme from "@/common/Rtheme";
 export default {
   name: "Home",
   data() {
@@ -64,9 +63,6 @@ export default {
       asideTxtColor: "#B3B8C3",
       transitionName: ""
     };
-  },
-  components: {
-    Rtheme
   },
   computed: {
     ...mapGetters(["user", "menu", "themeColor"]),

@@ -1,5 +1,14 @@
 // 启用状态
-const statusAction = value => (value === "2" ? "启用" : "停用");
+const statusAction = value => {
+  switch (value) {
+    case "2":
+      return "启用";
+
+    default:
+      return "停用";
+  }
+};
+
 // 审核状态
 const mtStatus = value => {
   switch (value) {

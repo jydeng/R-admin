@@ -53,8 +53,6 @@
 </template>
 
 <script>
-import { dateShortcuts } from "@/helpers/elementHelper";
-import Rtable from "@/common/Rtable";
 import { mapGetters } from "vuex";
 // 按需引入 echarts
 const echarts = require("echarts/lib/echarts");
@@ -69,15 +67,12 @@ require("echarts/lib/component/tooltip");
 
 export default {
   name: "Dashboard",
-  components: {
-    Rtable
-  },
   data() {
     return {
       activeChanel: "all",
       selectedDate: ["", ""],
       pickerOptions: {
-        shortcuts: dateShortcuts
+        shortcuts: this.elementHelper.dateShortcuts
       },
       page: 1,
       columns: [
