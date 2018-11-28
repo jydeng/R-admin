@@ -4,18 +4,23 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
+    "build:win": "yarn build:server && move dist\\vue-ssr-server-bundle.json bundle && yarn build:client && move bundle dist\\vue-ssr-server-bundle.json"
   },
   "dependencies": {
-    "wangeditor": "^3.1.1",
     "axios": "^0.18.0",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.10",
     "jsonp": "^0.2.1",
+    "koa": "^2.6.2",
+    "koa-static": "^5.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue-server-renderer": "^2.5.17",
+    "vuex": "^3.0.1",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
@@ -24,7 +29,9 @@
     "@vue/eslint-config-prettier": "^3.0.3",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.17"
+    "cross-env": "^5.2.0",
+    "vue-template-compiler": "^2.5.17",
+    "webpack-node-externals": "^1.7.2"
   },
   "browserslist": [
     "> 1%",

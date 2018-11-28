@@ -4,8 +4,8 @@ import "./style/index.scss";
 import Vue from "vue";
 import App from "./App.vue";
 
-import router from "./router";
-import store from "./store";
+import createRouter from "./router";
+import createStore from "./store";
 
 import Element from "element-ui";
 
@@ -32,58 +32,65 @@ Vue.use(Filters);
 // 引用帮助函数
 Vue.use(Helper);
 
-/** 自动登录Begin **/
+export default () => {
+  const router = createRouter();
+  const store = createStore();
 
-// 从本地存储恢复状态,页面退出时将状态写入webStorage
-const storageInfo = Vue.prototype.webStorageHelper.read("state");
-// 判断状态是否有效
-if (storageInfo && storageInfo["user"]) {
-  store.dispatch("login", {
-    user: {
-      username: storageInfo.user.username,
-      role: storageInfo.user.role
+  /** 自动登录Begin **/
+
+  // 从本地存储恢复状态,页面退出时将状态写入webStorage
+  // const storageInfo = Vue.prototype.webStorageHelper.read("state");
+  // // 判断状态是否有效
+  // if (storageInfo && storageInfo["user"]) {
+  //   store.dispatch("login", {
+  //     user: {
+  //       username: storageInfo.user.username,
+  //       role: storageInfo.user.role
+  //     }
+  //   });
+  //   store.dispatch("setmenu", storageInfo.menu);
+  //   store.dispatch("changeThemeColor", storageInfo.themeColor);
+  // }
+
+  /** 自动登录End **/
+
+  // 全局路由守卫
+  // 身份验证 & 访问区域验证
+  router.beforeEach((to, form, next) => {
+    // 排除路由，不做验证
+    const excludeRoute = ["Login", "NoAuthority", "NotFound"];
+    // 用户信息
+    const user = store.state.user;
+    // 菜单记录
+    const menu = store.state.menu;
+    // 用户信息是否过期
+    const invalidUser = user == null || user.username === "";
+    // 计算当前根路径，访问权限依据根路径进行判断
+    const currentRootPath = /(\/[a-zA-Z]*)/.exec(to.path).pop();
+    // 当前区域是否允许访问
+    const notAllowAccess =
+      currentRootPath !== "/Dashboard" &&
+      (menu === null ||
+        menu.filter(p => p.url === currentRootPath).length === 0);
+
+    if (!~excludeRoute.indexOf(to.name)) {
+      if (invalidUser) {
+        next("/Login");
+      }
+
+      if (notAllowAccess) {
+        next("/NotFound");
+      }
     }
+
+    next();
   });
-  store.dispatch("setmenu", storageInfo.menu);
-  store.dispatch("changeThemeColor", storageInfo.themeColor);
-}
 
-/** 自动登录End **/
+  const app = new Vue({
+    router,
+    store,
+    render: h => h(App)
+  });
 
-// 全局路由守卫
-// 身份验证 & 访问区域验证
-router.beforeEach((to, form, next) => {
-  // 排除路由，不做验证
-  const excludeRoute = ["Login", "NoAuthority", "NotFound"];
-  // 用户信息
-  const user = store.state.user;
-  // 菜单记录
-  const menu = store.state.menu;
-  // 用户信息是否过期
-  const invalidUser = user == null || user.username === "";
-  // 计算当前根路径，访问权限依据根路径进行判断
-  const currentRootPath = /(\/[a-zA-Z]*)/.exec(to.path).pop();
-  // 当前区域是否允许访问
-  const notAllowAccess =
-    currentRootPath !== "/Dashboard" &&
-    (menu === null || menu.filter(p => p.url === currentRootPath).length === 0);
-
-  if (!~excludeRoute.indexOf(to.name)) {
-    if (invalidUser) {
-      next("/Login");
-    }
-
-    if (notAllowAccess) {
-      next("/NotFound");
-    }
-  }
-
-  next();
-});
-
-// 初始化Vue组件并挂载到DOM
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+  return { app, router };
+};

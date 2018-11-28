@@ -6,44 +6,45 @@ import NotFound from "@/pages/NotFound";
 
 Vue.use(Router);
 
-const router = new Router({
-  routes: [
-    {
-      path: "/",
-      component: Home,
-      children: [
-        {
-          path: "/",
-          redirect: "/Dashboard"
-        },
-        {
-          path: "/Dashboard",
-          name: "Dashboard",
-          component: resolve => require(["@/views/Dashboard.vue"], resolve)
-        },
-        {
-          path: "Table",
-          name: "Table",
-          component: resolve => require(["@/views/Table.vue"], resolve)
-        },
-        {
-          path: "Editor",
-          name: "Editor",
-          component: resolve => require(["@/views/Editor.vue"], resolve)
-        }
-      ]
-    },
-    {
-      path: "/Login",
-      name: "Login",
-      component: Login
-    },
-    {
-      path: "*",
-      name: "NotFound",
-      component: NotFound
-    }
-  ]
-});
-
-export default router;
+export default () => {
+  return new Router({
+    mode: "history",
+    routes: [
+      {
+        path: "/",
+        component: Home,
+        children: [
+          {
+            path: "/",
+            redirect: "/Dashboard"
+          },
+          {
+            path: "/Dashboard",
+            name: "Dashboard",
+            component: () => import("@/views/Dashboard.vue")
+          },
+          {
+            path: "Table",
+            name: "Table",
+            component: () => import("@/views/Table.vue")
+          },
+          {
+            path: "Editor",
+            name: "Editor",
+            component: () => import("@/views/Editor.vue")
+          }
+        ]
+      },
+      {
+        path: "/Login",
+        name: "Login",
+        component: Login
+      },
+      {
+        path: "*",
+        name: "NotFound",
+        component: NotFound
+      }
+    ]
+  });
+};

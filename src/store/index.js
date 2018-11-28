@@ -8,4 +8,6 @@ import mutations from "./mutations";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({ state, getters, actions, mutations });
+export default () => {
+  return new Vuex.Store({ state, getters, actions, mutations });
+};
