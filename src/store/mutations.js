@@ -7,6 +7,7 @@ export default {
   [Types.LOGOUT](state) {
     state.user = { username: "", role: "" };
     state.menu = [];
+    state.themeColor = "#27B6AF";
   },
   [Types.SETMENU](state, payload) {
     state.menu = payload;

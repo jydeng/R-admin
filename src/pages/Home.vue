@@ -91,6 +91,7 @@ export default {
           });
 
           this.logout();
+          this.webStorageHelper.remove("state");
           this.$router.push("/Login");
           break;
 

@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
+    "ssr": "node ./server",
     "build:client": "vue-cli-service build",
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
     "build:win": "yarn build:server && move dist\\vue-ssr-server-bundle.json bundle && yarn build:client && move bundle dist\\vue-ssr-server-bundle.json"

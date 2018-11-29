@@ -48,6 +48,7 @@ export default {
         user: { username: this.user.username, role: "1" }
       });
 
+      this.webStorageHelper.write("state", this.$store.state);
       this.$router.push("/");
     }
   }

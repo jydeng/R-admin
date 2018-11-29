@@ -32,7 +32,7 @@ export default {
     // 高度
     height: {
       type: Number,
-      default: 400 //window.innerHeight - 300
+      default: 600 //window.innerHeight - 300
     },
     // 行样式
     rowClassName: {
