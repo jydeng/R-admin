@@ -1,7 +1,6 @@
 import axios from "axios";
 import qs from "qs";
 import { Notification } from "element-ui";
-import router from "@/router";
 
 const Axios = axios.create({
   baseURL: process.env.NODE_ENV === "production" ? "/" : "/api",
@@ -36,7 +35,8 @@ Axios.interceptors.response.use(
           message: "登录超时，请重新登录",
           type: "warning"
         });
-        router.push("/login");
+        window.location.hash = "login";
+        window.location.href = href;
         break;
 
       case 200:

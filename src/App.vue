@@ -19,10 +19,6 @@ export default {
       this.changeThemeColor(state.themeColor);
       this.$router.go(-1);
     }
-  },
-  beforeDestroy() {
-    // 将vuex状态写入webStorage
-    this.webStorageHelper.write("state", this.$store.state);
   }
 };
 </script>
