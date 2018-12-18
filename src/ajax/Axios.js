@@ -36,7 +36,7 @@ Axios.interceptors.response.use(
           type: "warning"
         });
         window.location.hash = "login";
-        window.location.href = href;
+        window.location.href = window.location.href;
         break;
 
       case 200:
