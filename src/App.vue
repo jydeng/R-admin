@@ -17,7 +17,7 @@ export default {
       this.login({ user: state.user });
       this.setmenu(state.menu);
       this.changeThemeColor(state.themeColor);
-      this.$router.go(-1);
+      this.$router.push("/");
     }
   }
 };
