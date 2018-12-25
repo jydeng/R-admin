@@ -13,7 +13,9 @@
       <!-- <span class="consume">实时消耗：0</span> -->
       <el-dropdown class="userinfo" @command="handleUserDropdown">
         <span>
-          <img src="@/assets/profile.jpg" alt="profile"> {{user.username}} <i class="fa fa-sort-down"></i>
+          <img src="@/assets/profile.jpg" alt="profile">
+          {{user.username}}
+          <i class="fa fa-sort-down"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="logout">
@@ -24,7 +26,6 @@
     </el-header>
 
     <el-container>
-
       <!-- 左侧菜单 -->
       <el-aside :style="{ width: asideWidth }">
         <div class="profile" v-show="!isCollapse">
@@ -33,7 +34,7 @@
         <el-menu :router="true" :background-color="asideBgColor" :text-color="asideTxtColor" :default-active="activeMenu" :collapse="isCollapse">
           <el-menu-item v-for="m in menu" :index="m.url" :key="m.id">
             <i :class="m.icon"></i>
-            <span slot="title"> {{m.name}} </span>
+            <span slot="title">{{m.name}}</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
@@ -46,9 +47,7 @@
           </transition>
         </el-main>
       </el-container>
-
     </el-container>
-
   </el-container>
 </template>
 

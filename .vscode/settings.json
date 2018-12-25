@@ -1,0 +1,29 @@
+{
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "solid",
+  "editor.find.autoFindInSelection": true,
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "100",
+  "editor.fontFamily": "Consolas, '微软雅黑'",
+  "workbench.enableExperiments": false,
+  "workbench.colorTheme": "Visual Studio Light",
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettyhtml": {
+      "printWidth": 160
+    },
+    "prettier": {
+      "singleQuote": false,
+      "proseWrap": "never",
+      "printWidth": 130
+    }
+  }
+}

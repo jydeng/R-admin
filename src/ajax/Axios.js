@@ -40,11 +40,11 @@ Axios.interceptors.response.use(
         break;
 
       case 200:
-        return res;
+        return Promise.resolve(res);
 
       case 400:
         Notification({ message: res.data.msg, type: "error" });
-        return Promise.reject();
+        return Promise.reject(res.data.ms);
     }
   },
   error => {

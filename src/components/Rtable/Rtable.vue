@@ -7,18 +7,31 @@
           <!-- 插槽 -->
           <slot v-if="column.slotName" :name="column.slotName" slot-scope="scope"></slot>
           <!-- normal -->
-          <el-table-column v-else :key="index" :prop="column.prop" :label="column.label" :sortable="column.sort" :fixed="column.fixed" :show-overflow-tooltip="true" :formatter="column.formatter">
-          </el-table-column>
+          <el-table-column
+            v-else
+            :key="index"
+            :prop="column.prop"
+            :label="column.label"
+            :sortable="column.sort"
+            :fixed="column.fixed"
+            :show-overflow-tooltip="true"
+            :formatter="column.formatter"
+          ></el-table-column>
         </template>
       </el-table>
     </el-row>
     <el-row v-if="pagination">
       <!-- 分页 -->
-      <el-pagination background layout="jumper, prev, pager, next, total " :total="totalSize" :page-size="pageSize" :current-page="currentPage" @current-change="handleChangePage">
-      </el-pagination>
+      <el-pagination
+        background
+        layout="jumper, prev, pager, next, total "
+        :total="totalSize"
+        :page-size="pageSize"
+        :current-page="currentPage"
+        @current-change="handleChangePage"
+      ></el-pagination>
     </el-row>
   </el-row>
-
 </template>
 
 <script>

@@ -1,6 +1,5 @@
 <template>
-  <el-color-picker size="mini" v-model="theme" :predefine="predefine">
-  </el-color-picker>
+  <el-color-picker size="mini" v-model="theme" :predefine="predefine"></el-color-picker>
 </template>
 
 <script>
@@ -45,11 +44,7 @@ export default {
       const gHandler = (variable, id, originalCluster, themeCluster) => {
         return () => {
           let styleTag = document.getElementById(id);
-          const newStyle = this.updateStyle(
-            this[variable],
-            originalCluster,
-            themeCluster
-          );
+          const newStyle = this.updateStyle(this[variable], originalCluster, themeCluster);
 
           if (!styleTag) {
             styleTag = document.createElement("style");
@@ -63,12 +58,7 @@ export default {
         };
       };
 
-      const chalkHandler = gHandler(
-        "chalk",
-        "chalk-style",
-        originalCluster,
-        themeCluster
-      );
+      const chalkHandler = gHandler("chalk", "chalk-style", originalCluster, themeCluster);
 
       // 若chalk有值，表示已经下载过脚本，执行chalkHandle即可
       if (!this.chalk) {
