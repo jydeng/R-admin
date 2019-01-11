@@ -1,13 +1,28 @@
 <template>
   <div>
-    <el-upload class="uploader" :action="url" :name="name" :on-success="success" :before-upload="before" :show-file-list="false">
+    <el-upload
+      class="uploader"
+      :action="url"
+      :name="name"
+      :on-success="success"
+      :before-upload="before"
+      :show-file-list="false"
+    >
       <img v-if="value" :src="value" class="uploader-img">
       <i v-else class="fa fa-fw fa-cloud-upload uploader-icon">点击上传</i>
     </el-upload>
 
     <span v-if="label" class="label">{{label}}</span>
 
-    <el-input v-if="input" class="customerPath" prefix-icon="fa fa-fw fa-html5" placeholder="直接输入图片地址" :value="value" ref="input" @input="inputUrl"></el-input>
+    <el-input
+      v-if="input"
+      class="customerPath"
+      prefix-icon="fa fa-fw fa-html5"
+      placeholder="直接输入图片地址"
+      :value="value"
+      ref="input"
+      @input="inputUrl"
+    ></el-input>
 
     <el-button v-if="review && value" class="reviewImg" @click="reviewImg">
       <i class="fa fa-search-plus"></i> 预览
@@ -44,7 +59,9 @@ export default {
   methods: {
     before(file) {
       if (this.suffix.length > 0 && !~this.suffix.indexOf(file.type)) {
-        this.$message.error(`不允许上传类型${this.suffix.join("，")}以外的文件.`);
+        this.$message.error(
+          `不允许上传类型${this.suffix.join("，")}以外的文件.`
+        );
         return false;
       }
 
