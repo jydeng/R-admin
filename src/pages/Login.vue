@@ -22,7 +22,8 @@ export default {
       user: {
         username: "",
         password: ""
-      }
+      },
+      redirect: this.$route.query["redirect"]
     };
   },
   methods: {
@@ -45,11 +46,23 @@ export default {
       }
 
       this.login({
-        user: { username: this.user.username, role: "1" }
+        user: { username: this.user.username, role: "1" },
+        token: "123456"
       });
 
       this.webStorageHelper.write("state", this.$store.state);
-      this.$router.push("/");
+      this.$router.push(this.redirect || "/Dashboard");
+    }
+  },
+  mounted() {
+    const state = this.webStorageHelper.read("state");
+    if (state && state["token"]) {
+      this.login({
+        user: { username: state.user.username, role: state.user.role },
+        token: state.token
+      });
+
+      this.$router.push(this.redirect || "/Dashboard");
     }
   }
 };

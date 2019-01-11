@@ -3,66 +3,65 @@ import Router from "vue-router";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
+import store from "@/store";
 
 Vue.use(Router);
 
-export default store => {
-  return new Router({
-    mode: "history",
-    routes: [
-      {
-        path: "/",
-        component: Home,
-        beforeEnter(to, from, next) {
-          const logon = store.getters.logon;
-          const menu = store.getters.menu;
-          const rootPath = /(\/[a-zA-Z]*)/.exec(to.path).pop();
-
-          if (!logon) {
-            next("/Login");
-          } else {
-            if (
-              rootPath !== "/Dashboard" &&
-              menu.filter(p => p.url === rootPath).length === 0
-            ) {
-              next("/NotFound");
-            }
-
-            next();
-          }
+export default new Router({
+  mode: "history",
+  routes: [
+    {
+      path: "/",
+      component: Home,
+      children: [
+        {
+          path: "/",
+          redirect: "/Dashboard",
+          meta: { auth: true }
         },
-        children: [
-          {
-            path: "/",
-            redirect: "/Dashboard"
-          },
-          {
-            path: "/Dashboard",
-            name: "Dashboard",
-            component: () => import("@/views/Dashboard.vue")
-          },
-          {
-            path: "Table",
-            name: "Table",
-            component: () => import("@/views/Table.vue")
-          },
-          {
-            path: "Editor",
-            name: "Editor",
-            component: () => import("@/views/Editor.vue")
+        {
+          path: "/Dashboard",
+          name: "Dashboard",
+          component: () => import("@/views/Dashboard.vue"),
+          meta: { auth: true }
+        },
+        {
+          path: "Table",
+          name: "Table",
+          component: () => import("@/views/Table.vue"),
+          meta: { auth: true }
+        },
+        {
+          path: "Editor",
+          name: "Editor",
+          component: () => import("@/views/Editor.vue"),
+          meta: { auth: true }
+        }
+      ],
+      beforeEnter(to, from, next) {
+        if (to.meta.auth) {
+          if (store.state.token) {
+            next();
+          } else {
+            next({
+              path: "/Login",
+              query: { redirect: to.fullPath }
+            });
           }
-        ]
-      },
-      {
-        path: "/Login",
-        name: "Login",
-        component: Login
-      },
-      {
-        path: "*",
-        name: "NotFound",
-        component: NotFound
+        } else {
+          next();
+        }
       }
-    ]
-  });
-};
+    },
+    {
+      path: "/Login",
+      name: "Login",
+      component: Login
+    },
+    {
+      path: "*",
+      name: "NotFound",
+      component: NotFound
+    }
+  ]
+});

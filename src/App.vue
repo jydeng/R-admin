@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import store from "@/store";
 export default {
   name: "App",
   methods: {
-    ...mapActions(["login", "setmenu", "changeThemeColor"])
-  },
-  beforeMount() {
-    // 尝试从webStorage还原vuex状态
-    const state = this.webStorageHelper.read("state");
-    if (state && state["user"] && state["user"]["username"]) {
-      this.login({ user: state.user });
-      this.setmenu(state.menu);
-      this.changeThemeColor(state.themeColor);
-      this.$router.push("/");
+    beforeunloadHandler() {
+      if (store.state.token) {
+        this.webStorageHelper.write("state", store.state);
+      }
     }
+  },
+  mounted() {
+    window.addEventListener("beforeunload", () => this.beforeunloadHandler());
+  },
+  destroyed() {
+    window.removeEventListener("beforeunload");
   }
 };
 </script>

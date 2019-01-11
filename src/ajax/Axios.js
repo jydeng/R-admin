@@ -1,10 +1,13 @@
 import axios from "axios";
 import qs from "qs";
 import { Notification } from "element-ui";
+import store from "@/store";
+import router from "@/router";
 
+// axios实例
 const Axios = axios.create({
   baseURL: process.env.NODE_ENV === "production" ? "/" : "/api",
-  timeout: 10000,
+  timeout: 5000,
   responseType: "json"
 });
 
@@ -14,14 +17,11 @@ Axios.interceptors.request.use(
     if (config.method === "post") {
       config.data = qs.stringify(config.data);
     }
+    config.headers["Authorization"] = store.state.token;
     return config;
   },
   error => {
-    Notification({
-      message: error.message,
-      type: "error"
-    });
-
+    console.error(error);
     return Promise.reject(error.message);
   }
 );
@@ -29,30 +29,51 @@ Axios.interceptors.request.use(
 // 请求响应阶段
 Axios.interceptors.response.use(
   res => {
-    switch (res.data.code) {
-      case 300:
-        Notification({
-          message: "登录超时，请重新登录",
-          type: "warning"
-        });
-        window.location.hash = "login";
-        window.location.href = window.location.href;
-        break;
+    const data = res.data;
+    const { code } = data;
 
-      case 200:
-        return Promise.resolve(res);
+    if (code) {
+      switch (code) {
+        case 200:
+          Notification({
+            message: res.data.msg,
+            type: "success",
+            duration: 2000
+          });
+          return Promise.resolve(res.data);
 
-      case 400:
-        Notification({ message: res.data.msg, type: "error" });
-        return Promise.reject(res.data.ms);
+        default:
+          Notification({
+            message: res.data.msg,
+            type: "error",
+            duration: 2000
+          });
+          return Promise.reject(res.data.msg);
+      }
+    } else {
+      return Promise.resolve(res.data);
     }
   },
   error => {
-    Notification({
-      message: "网络错误,请重试",
-      type: "error"
-    });
-    return Promise.reject(error);
+    switch (error.response.status) {
+      case 400:
+        Notification({
+          message: "登录超时，请重新登录",
+          type: "warning",
+          duration: 2000
+        });
+
+        store.dispatch("logout");
+        router.push("/Login");
+        return Promise.reject(error.message);
+      default:
+        Notification({
+          message: "网络错误,请重试",
+          type: "error",
+          duration: 3000
+        });
+        return Promise.reject(error.message);
+    }
   }
 );
 

@@ -4,8 +4,8 @@ import "./style/index.scss";
 import Vue from "vue";
 import App from "./App.vue";
 
-import createRouter from "./router";
-import createStore from "./store";
+import router from "./router";
+import store from "./store";
 
 import Element from "element-ui";
 
@@ -33,9 +33,6 @@ Vue.use(Filters);
 Vue.use(Helper);
 
 export default () => {
-  const store = createStore();
-  const router = createRouter(store);
-
   const app = new Vue({
     router,
     store,
