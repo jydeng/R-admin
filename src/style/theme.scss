@@ -1,7 +1,13 @@
+/* 背景 */
+body {
+  background: #e2e2e2;
+  background-image: url(../assets/bg.png);
+  background-repeat: repeat-x;
+}
 /* 改变主题色变量 */
-$--color-primary: #27B6AF;
+$--color-primary: #27b6af;
 
 /* 改变 icon 字体路径变量，必需 */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
 
-@import '~element-ui/packages/theme-chalk/src/index';
+@import "~element-ui/packages/theme-chalk/src/index";
