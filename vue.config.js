@@ -34,7 +34,9 @@ module.exports = {
       optimization: {
         splitChunks: undefined
       },
-      plugins: [TARGET_NODE ? new VueSSRServerPlugin() : new VueSSRClientPlugin()],
+      plugins: [
+        TARGET_NODE ? new VueSSRServerPlugin() : new VueSSRClientPlugin()
+      ],
       devServer: PRODUCTION
         ? undefined
         : {

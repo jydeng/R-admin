@@ -6,7 +6,6 @@
         <el-button type="primary" plain @click="handleWrite">写入</el-button>
         <el-button type="primary" plain @click="handleRead">读取</el-button>
       </el-col>
-
     </el-row>
     <div ref="editor"></div>
   </el-row>

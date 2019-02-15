@@ -5,10 +5,18 @@
       <a href="." class="logo" title="vue-admin">
         <img src="@/assets/logo.png" alt="logo">
       </a>
-      <a href="javascript:void(0)" class="toggle" title="菜单切换" @click="asideToggle">
+      <a
+        href="javascript:void(0)"
+        class="toggle"
+        title="菜单切换"
+        @click="asideToggle"
+      >
         <i class="fa fa-th-list"></i>
       </a>
-      <Rtheme :themeColor="themeColor" @changeThemeColor="handleChangeThemeColor"></Rtheme>
+      <Rtheme
+        :themeColor="themeColor"
+        @changeThemeColor="handleChangeThemeColor"
+      ></Rtheme>
       <a class="space"></a>
       <!-- <span class="consume">实时消耗：0</span> -->
       <el-dropdown class="userinfo" @command="handleUserDropdown">
@@ -31,7 +39,13 @@
         <div class="profile" v-show="!isCollapse">
           <img src="@/assets/profile.jpg" alt="profile">
         </div>
-        <el-menu :router="true" :background-color="asideBgColor" :text-color="asideTxtColor" :default-active="activeMenu" :collapse="isCollapse">
+        <el-menu
+          :router="true"
+          :background-color="asideBgColor"
+          :text-color="asideTxtColor"
+          :default-active="activeMenu"
+          :collapse="isCollapse"
+        >
           <el-menu-item v-for="m in menu" :index="m.url" :key="m.id">
             <i :class="m.icon"></i>
             <span slot="title">{{m.name}}</span>
@@ -122,6 +136,12 @@ export default {
           id: "3",
           name: "编辑器",
           url: "/Editor"
+        },
+        {
+          icon: "fa fa-fw fa-html5",
+          id: "4",
+          name: "参数输入框",
+          url: "/UrlInput"
         }
       ]);
     }

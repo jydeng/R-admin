@@ -36,6 +36,12 @@ export default new Router({
           name: "Editor",
           component: () => import("@/views/Editor.vue"),
           meta: { auth: true }
+        },
+        {
+          path: "UrlInput",
+          name: "UrlInput",
+          component: () => import("@/views/UrlInput.vue"),
+          meta: { auth: true }
         }
       ],
       beforeEnter(to, from, next) {
