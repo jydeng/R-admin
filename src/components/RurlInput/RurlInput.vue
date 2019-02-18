@@ -13,7 +13,7 @@
     <!-- 加点动画 -->
     <transition name="params">
       <!-- 参数输入div  -->
-      <div class="params" v-show="opened">
+      <div :class="{'params':true,'position':position}" v-show="opened">
         <!-- 第一项 -->
         <div class="param">
           <el-input placeholder="key" v-model="first.k"></el-input>
@@ -57,7 +57,8 @@ export default {
     prefixicon: {
       type: String,
       default: "fa fa-fw fa-html5"
-    }
+    },
+    position: Boolean
   },
   data() {
     return {
@@ -182,9 +183,8 @@ export default {
   z-index: 2;
 
   .params {
-    position: absolute;
     width: 100%;
-    top: 40px;
+    margin-top: 10px;
     z-index: 2;
     border: 1px solid #dcdfe6;
     border-radius: 4px;
@@ -207,6 +207,11 @@ export default {
         width: 100%;
       }
     }
+  }
+
+  .params.position {
+    position: absolute;
+    top: 40px;
   }
 
   .params-enter-active,
