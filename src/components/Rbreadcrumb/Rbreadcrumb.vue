@@ -1,8 +1,13 @@
 <template>
   <el-row class="breadcrumb">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item v-for="(link,index) in links" :key="index" :to="{ path: link.url }">
-        <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i> {{link.name}}
+      <el-breadcrumb-item
+        v-for="(link,index) in links"
+        :key="index"
+        :to="{ path: link.url }"
+      >
+        <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i>
+        {{link.name}}
       </el-breadcrumb-item>
     </el-breadcrumb>
   </el-row>
@@ -33,19 +38,20 @@ export default {
       // 分组匹配结果
       const matchResult = reg.exec(this.$route.path);
       // 根节点
-      const root = "/Dashboard";
+      // const root = "/Dashboard";
       // 第一层
       const first = matchResult[1];
       // 初始化，从menu中搜索菜单名与图表
-      let retult = [this.menu.find(item => item.url === root)];
-      // 查找第一层菜单名与图表
-      if (first) {
-        retult.push(this.menu.find(item => item.url === first));
+      let result = [];
+      if (this.menu.length) {
+        // result.push(this.menu.find(item => item.url === root));
+        // 查找第一层菜单名与图表
+        result.push(this.menu.find(item => item.url === first));
+        // 拼接附加内容
       }
-      // 拼接附加内容
-      retult = retult.concat(this.append);
+      result = result.concat(this.append);
 
-      return retult;
+      return result;
     }
   }
 };

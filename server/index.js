@@ -29,7 +29,7 @@ app.use(koaStatic(resolve("../dist")));
 
 app.use(async ctx => {
   const context = {
-    title: "vue-admin",
+    title: "Vue-Admin",
     url: ctx.url
   };
   const html = await renderToString(context);

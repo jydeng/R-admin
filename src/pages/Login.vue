@@ -1,11 +1,23 @@
 <template>
   <el-row class="wrapper">
     <el-col :md="12" class="left">
-      <h2 class="title">vue-admin</h2>
+      <div class="title"></div>
     </el-col>
     <el-col :md="12" class="right">
-      <el-input placeholder="请输入你的账号" clearable prefix-icon="fa fa-fw fa-user" v-model="user.username"></el-input>
-      <el-input placeholder="请输入你的密码" type="password" prefix-icon="fa fa-fw fa-key" clearable v-model="user.password" @keyup.enter.native="handleLogin"></el-input>
+      <el-input
+        placeholder="请输入你的账号"
+        clearable
+        prefix-icon="fa fa-fw fa-user"
+        v-model="user.username"
+      ></el-input>
+      <el-input
+        placeholder="请输入你的密码"
+        type="password"
+        prefix-icon="fa fa-fw fa-key"
+        clearable
+        v-model="user.password"
+        @keyup.enter.native="handleLogin"
+      ></el-input>
       <el-button type="primary" @click="handleLogin">
         <i class="fa fa-fw fa-power-off"></i> 登 录
       </el-button>
@@ -85,16 +97,24 @@ export default {
   }
 
   .left {
+    position: relative;
     line-height: 260px;
     border-right: 1px dotted #ddd;
 
     // 标题
     .title {
+      position: absolute;
+      height: 200px;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url(../assets/logo.png) no-repeat center center;
+      background-size: 50%;
+      margin: 0;
       font-size: 18px;
       text-align: center;
       font-weight: 525;
       color: #666666;
-      margin: 0;
     }
   }
 

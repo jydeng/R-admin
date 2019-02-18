@@ -2,9 +2,7 @@
   <el-container class="wrapper">
     <!-- 顶部 -->
     <el-header>
-      <a href="." class="logo" title="vue-admin">
-        <img src="@/assets/logo.png" alt="logo">
-      </a>
+      <a href="." class="logo" title="Vue-Admin"></a>
       <a
         href="javascript:void(0)"
         class="toggle"
@@ -81,7 +79,7 @@ export default {
     ...mapGetters(["user", "menu", "themeColor"]),
     // 左侧菜单宽度
     asideWidth() {
-      return this.isCollapse ? "55px" : "230px";
+      return this.isCollapse ? "55px" : "210px";
     },
     // 当前激活的菜单
     activeMenu() {
@@ -184,7 +182,10 @@ export default {
     // logo
     .logo {
       height: 100%;
+      width: 100px;
       vertical-align: middle;
+      background: url(../assets/profile.jpg) no-repeat center center;
+      background-size: 40%;
     }
 
     // 菜单收缩展开
@@ -241,7 +242,6 @@ export default {
         width: 100px;
         margin: 0 auto;
         border-radius: 50%;
-        box-shadow: 0 0 5px #e2e2e2;
       }
     }
 
@@ -253,7 +253,7 @@ export default {
 
     // 展开状态
     .el-menu:not(.el-menu--collapse) {
-      width: 230px;
+      width: 210px;
     }
 
     // 加粗显示当前的项目
