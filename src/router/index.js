@@ -26,19 +26,19 @@ export default new Router({
           meta: { auth: true }
         },
         {
-          path: "Table",
+          path: "/Table",
           name: "Table",
           component: () => import("@/views/Table.vue"),
           meta: { auth: true }
         },
         {
-          path: "Editor",
+          path: "/Editor",
           name: "Editor",
           component: () => import("@/views/Editor.vue"),
           meta: { auth: true }
         },
         {
-          path: "UrlInput",
+          path: "/UrlInput",
           name: "UrlInput",
           component: () => import("@/views/UrlInput.vue"),
           meta: { auth: true }

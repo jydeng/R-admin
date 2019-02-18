@@ -2,39 +2,46 @@
   <div class="wrap">
     <!-- 一个普通的输入框 -->
     <el-input
+      type="text"
       :placeholder="placeholder"
       :prefix-icon="prefixicon"
-      v-model="currentValue"
-      @focus="showParams = true"
+      :value="url"
+      @input="urlInput"
+      @focus="opened = true"
     ></el-input>
 
-    <!-- 参数输入div  -->
-    <div class="params" v-show="showParams" ref="params">
-      <!-- 第一项 -->
-      <div class="param">
-        <el-input placeholder="key" v-model="first.k"></el-input>
-        <el-input placeholder="value" v-model="first.v"></el-input>
-        <el-button type="text" @click="handleAdd">
-          <i class="fa fa-fw fa-plus"></i>
-        </el-button>
-      </div>
+    <!-- 加点动画 -->
+    <transition name="params">
+      <!-- 参数输入div  -->
+      <div class="params" v-show="opened">
+        <!-- 第一项 -->
+        <div class="param">
+          <el-input placeholder="key" v-model="first.k"></el-input>
+          <el-input placeholder="value" v-model="first.v">
+            <el-button type="text" slot="suffix" @click="add" title="增加一项">
+              <i class="fa fa-fw fa-plus"></i>
+            </el-button>
+          </el-input>
+        </div>
 
-      <!-- 可以增加的项 -->
-      <div class="param" v-for="(param,k) in params" :key="k">
-        <el-input placeholder="key" v-model="param.k"></el-input>
-        <el-input placeholder="value" v-model="param.v"></el-input>
-        <el-button type="text" @click="handleRemove(k)">
-          <i class="fa fa-fw fa-times"></i>
-        </el-button>
-      </div>
+        <!-- 可以增加的项 -->
+        <div class="param" v-for="(param,i) in params" :key="i">
+          <el-input placeholder="key" v-model="param.k"></el-input>
+          <el-input placeholder="value" v-model="param.v" title="移除本项">
+            <el-button type="text" slot="suffix" @click="remove(i)">
+              <i class="fa fa-fw fa-times"></i>
+            </el-button>
+          </el-input>
+        </div>
 
-      <!-- 工具栏 -->
-      <div class="tool">
-        <el-button type="text" @click="showParams = false">
-          <i class="fa fa-fw fa-angle-double-up">折叠</i>
-        </el-button>
+        <!-- 工具栏 -->
+        <div class="tool">
+          <el-button type="text" @click="opened = false" title="折叠">
+            <i class="fa fa-fw fa-chevron-up"></i>
+          </el-button>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -54,45 +61,38 @@ export default {
   },
   data() {
     return {
-      currentValue: "",
-      showParams: false,
+      url: "",
+      opened: false,
       first: { k: "", v: "" },
-      params: {}
+      params: []
     };
   },
   computed: {
     baseUrl() {
-      return this.currentValue.split("?").shift();
-    }
-  },
-  watch: {
-    value(v) {
-      this.currentValue = v;
-      let params = this.getParams();
-      this.params2dom(params);
-    },
-    currentValue(v) {
-      this.$emit("input", v);
+      return this.url.split("?").shift();
     }
   },
   methods: {
-    /**
-     * 从url中找到params
-     */
-    getParams() {
-      let reg = /(\w+)=(\w*)/gi;
+    // 从url中找到params
+    search(url) {
+      let reg = /([^?&=]+)=([^?&=]*)/g;
       let params = {};
-      this.currentValue.replace(reg, (a, b, c) => {
-        params[b] = c;
+      let search = url.substring(url.lastIndexOf("?") + 1);
+      search.replace(reg, (rs, $1, $2) => {
+        let name = decodeURIComponent($1);
+        let val = decodeURIComponent($2);
+        val = String(val);
+        params[name] = val;
+
+        return rs;
       });
+
       return params;
     },
-    /**
-     * 从params计算dom结构
-     */
-    params2dom(p) {
+    // url => params
+    url2params(p) {
       let first = true;
-      let params = {};
+      let params = [];
 
       if (Object.keys(p).length) {
         for (let k in p) {
@@ -103,7 +103,7 @@ export default {
               this.first.v = v;
               first = false;
             } else {
-              params[this.$randomStr()] = { k, v };
+              params.push({ k, v });
             }
           }
         }
@@ -114,62 +114,64 @@ export default {
 
       this.params = params;
     },
-    /**
-     * 从dom结构计算出params
-     */
-    dom2params() {
-      let params = [];
+    // params => url
+    params2url() {
+      let result = [];
 
       if (this.first.k) {
-        params.push(`${this.first.k}=${this.first.v}`);
+        result.push(`${this.first.k}=${this.first.v}`);
       }
 
-      for (let k in this.params) {
-        if (this.params.hasOwnProperty(k)) {
-          let v = this.params[k];
-          if (v.k) {
-            params.push(`${v.k}=${v.v}`);
-          }
+      this.params.forEach(param => {
+        if (param.k) {
+          result.push(`${param.k}=${param.v}`);
         }
-      }
+      });
 
-      if (params.length) {
-        this.currentValue = `${this.baseUrl}?${params.join("&")}`;
+      if (result.length) {
+        this.url = `${this.baseUrl}?${result.join("&")}`;
       } else {
-        this.currentValue = "";
+        this.url = `${this.baseUrl}`;
       }
     },
-    /**
-     * 新增一栏
-     */
-    handleAdd() {
-      let uuid = this.$randomStr();
-      this.$set(this.params, uuid, { k: "", v: "" });
+    // 直接输入url事件
+    urlInput(url) {
+      this.$emit("input", url);
+      this.url2params(this.search(url));
     },
-    /**
-     * 移除一栏
-     */
-    handleRemove(uuid) {
-      this.$delete(this.params, uuid);
+    // 新增一项事件
+    add() {
+      this.params.push({ k: "", v: "" });
+    },
+    // 移除本项事件
+    remove(i) {
+      this.params.splice(i, 1);
     }
   },
   mounted() {
-    this.currentValue = this.value;
-
-    let params = this.getParams();
-    this.params2dom(params);
+    // 第一次手动同步
+    this.url = this.value;
+    // 渲染指定数量的param
+    this.url2params(this.search(this.value));
 
     this.$watch("first", {
       handler: function() {
-        this.dom2params();
+        this.params2url();
       },
       deep: true
     });
+
     this.$watch("params", {
       handler: function() {
-        this.dom2params();
+        this.params2url();
       },
       deep: true
+    });
+
+    this.$watch("value", {
+      handler: function(val) {
+        this.url = val;
+      }
     });
   }
 };
@@ -181,27 +183,18 @@ export default {
 
   .params {
     position: absolute;
-    top: 40px;
     width: 100%;
+    top: 40px;
     z-index: 2;
     border: 1px solid #dcdfe6;
     border-radius: 4px;
     background: #fff;
 
     .param {
-      margin: 10px 10px 0 10px;
+      text-align: center;
+      margin-top: 10px;
       .el-input {
-        width: calc(50% - 20px);
-      }
-      .el-input + .el-input {
-        margin-left: 10px;
-      }
-      .el-input + .el-input:before {
-        position: absolute;
-        top: 50%;
-        left: -8px;
-        transform: translateY(-50%);
-        content: ":";
+        width: calc(50% - 10px);
       }
     }
 
@@ -209,7 +202,21 @@ export default {
       text-align: center;
       margin-top: 10px;
       background-color: #f5f7fa;
+
+      .el-button {
+        width: 100%;
+      }
     }
+  }
+
+  .params-enter-active,
+  .params-leave-active {
+    transition: all 0.5s ease-out;
+  }
+
+  .params-enter,
+  .params-leave-to {
+    opacity: 0;
   }
 }
 </style>
