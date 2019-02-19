@@ -1,4 +1,4 @@
-## vue-admin
+## Vue-Admin
 
 Vue2.0 企业级管理系统快速开发原型，来自日常，服务日常。
 
@@ -13,7 +13,6 @@ Vue2.0 企业级管理系统快速开发原型，来自日常，服务日常。
 * FontAwesome
 * 富文本编辑器
 * 自定义主题
-* 服务端渲染
 * Echarts图表
 * More ......
 
@@ -32,16 +31,10 @@ yarn
 yarn serve 
 ```
 
-- 构建
+- 打包上线
 ```cmd
 yarn lint
 yarn build
-```
-
-- 服务端渲染构建&启动Koa服务器
-```cmd
-yarn build:win 
-node server
 ```
 
 

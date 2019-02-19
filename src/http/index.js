@@ -1,5 +1,5 @@
-import $http from "./Axios";
-import $jsonp from "./Jsonp";
+import $http from "./axios";
+import $jsonp from "./jsonp";
 
 export default {
   install: Vue => {

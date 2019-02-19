@@ -34,12 +34,15 @@
       >
         <el-table-column slot="operationBtn" label="操作" :width="'180px'">
           <template slot-scope="scope">
-            <el-button
-              type="text"
-              @click="handleClick(scope.row)"
-            >报表</el-button>
-            <el-button type="text">编辑</el-button>
-            <el-button type="text">删除</el-button>
+            <el-button type="text" @click="handleClick(scope.row)" title="报表">
+              <i class="fa fa-fw fa fa-line-chart"></i>
+            </el-button>
+            <el-button type="text" title="编辑">
+              <i class="fa fa-fw fa-pencil"></i>
+            </el-button>
+            <el-button type="text" title="删除">
+              <i class="fa fa-fw fa-times"></i>
+            </el-button>
           </template>
         </el-table-column>
       </Rtable>
@@ -53,7 +56,7 @@ export default {
     return {
       selectedDate: ["", ""],
       pickerOptions: {
-        shortcuts: this.elementHelper.dateShortcuts,
+        shortcuts: this.$storage.dateShortcuts,
         disabledDate(date) {
           return date.getTime() > new Date().getTime();
         }

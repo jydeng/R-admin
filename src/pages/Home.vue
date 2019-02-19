@@ -102,7 +102,7 @@ export default {
           });
 
           this.logout();
-          this.webStorageHelper.remove("state");
+          this.$storage.remove("state");
           this.$router.push("/Login");
           break;
 
@@ -126,13 +126,13 @@ export default {
         {
           icon: "fa fa-fw fa-table",
           id: "2",
-          name: "表格",
+          name: "数据表格",
           url: "/Table"
         },
         {
           icon: "fa fa-fw fa-pencil",
           id: "3",
-          name: "编辑器",
+          name: "富文本编辑器",
           url: "/Editor"
         },
         {

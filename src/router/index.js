@@ -4,8 +4,19 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 import store from "@/store";
+import storage from "@/shared/storage";
 
 Vue.use(Router);
+
+// 从storage中恢复登录信息
+let state = storage.read("state");
+
+if (state && state["token"]) {
+  store.dispatch("login", {
+    user: { username: state.user.username, role: state.user.role },
+    token: state.token
+  });
+}
 
 export default new Router({
   mode: "history",

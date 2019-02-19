@@ -12,9 +12,10 @@ import store from "./store";
 import Element from "element-ui";
 
 import R from "./components";
-import Ajax from "./ajax";
-import Filters from "./filters";
-import Helper from "./helper";
+import Http from "./http";
+import Filter from "./filter";
+import Directive from "./directive";
+import Shared from "./shared";
 
 // 生产环境不发出提示
 Vue.config.productionTip = false;
@@ -26,20 +27,19 @@ Vue.use(Element, { size: "small" });
 Vue.use(R);
 
 // 引用Ajax库
-Vue.use(Ajax);
+Vue.use(Http);
 
-// 引用管道函数
-Vue.use(Filters);
+// 引用自定义管道函数
+Vue.use(Filter);
 
-// 引用帮助函数
-Vue.use(Helper);
+// 引用自定义指令函数
+Vue.use(Directive);
 
-export default () => {
-  const app = new Vue({
-    router,
-    store,
-    render: h => h(App)
-  });
+// 引用公共函数
+Vue.use(Shared);
 
-  return { app, router };
-};
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount("#app");

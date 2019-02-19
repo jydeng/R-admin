@@ -2,10 +2,18 @@
   <el-row>
     <el-row>
       <!-- 表格 -->
-      <el-table v-loading="loading" :data="tableData" border :header-row-class-name="headerClass" :row-class-name="rowClassName" :height="height">
+      <el-table
+        v-loading="loading"
+        :data="tableData"
+        border
+        :header-row-class-name="headerClass"
+        :row-class-name="rowClassName"
+        :height="height"
+        @selection-change="handleSelection"
+      >
         <template v-for="(column,index) in columns">
           <!-- 插槽 -->
-          <slot v-if="column.slotName" :name="column.slotName" slot-scope="scope"></slot>
+          <slot v-if="column.slotName" :name="column.slotName"></slot>
           <!-- normal -->
           <el-table-column
             v-else
@@ -45,7 +53,7 @@ export default {
     // 高度
     height: {
       type: Number,
-      default: 600 //window.innerHeight - 300
+      default: window.innerHeight - 300
     },
     // 行样式
     rowClassName: {
@@ -89,6 +97,10 @@ export default {
     // 点击分页
     handleChangePage(currentPage) {
       this.$emit("changePage", { page: currentPage, pageSize: this.pageSize });
+    },
+    // checkbox选项发生变化
+    handleSelection(selection) {
+      this.$emit("changeSelection", selection);
     }
   }
 };

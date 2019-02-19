@@ -1,12 +1,12 @@
 import * as Types from "./mutation-types";
-import webStorageHelper from "@/helper/webStorageHelper";
+import storage from "@/shared/storage";
 
 export default {
   login({ commit }, payload) {
     commit(Types.LOGIN, payload);
   },
   logout({ commit }) {
-    webStorageHelper.remove("state");
+    storage.remove("state");
     commit(Types.LOGOUT);
   },
   setmenu({ commit }, payload) {

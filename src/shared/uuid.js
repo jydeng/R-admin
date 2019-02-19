@@ -1,5 +1,5 @@
 // 生成随机字符串
-export default function(len = 32) {
+export default (len = 32) => {
   const $chars =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   const maxPos = $chars.length;
@@ -8,4 +8,4 @@ export default function(len = 32) {
     str += $chars.charAt(Math.floor(Math.random() * maxPos));
   }
   return str;
-}
+};

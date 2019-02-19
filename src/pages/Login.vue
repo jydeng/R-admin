@@ -62,18 +62,7 @@ export default {
         token: "123456"
       });
 
-      this.webStorageHelper.write("state", this.$store.state);
-      this.$router.push(this.redirect || "/Dashboard");
-    }
-  },
-  mounted() {
-    const state = this.webStorageHelper.read("state");
-    if (state && state["token"]) {
-      this.login({
-        user: { username: state.user.username, role: state.user.role },
-        token: state.token
-      });
-
+      this.$storage.write("state", this.$store.state);
       this.$router.push(this.redirect || "/Dashboard");
     }
   }

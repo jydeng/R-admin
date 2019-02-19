@@ -72,7 +72,7 @@ export default {
       activeChanel: "all",
       selectedDate: ["", ""],
       pickerOptions: {
-        shortcuts: this.elementHelper.dateShortcuts
+        shortcuts: this.$storage.dateShortcuts
       },
       page: 1,
       columns: [

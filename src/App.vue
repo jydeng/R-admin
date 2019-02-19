@@ -10,7 +10,7 @@ export default {
   methods: {
     beforeunloadHandler() {
       if (store.state.token) {
-        this.webStorageHelper.write("state", store.state);
+        this.$storage.write("state", store.state);
       }
     }
   },
