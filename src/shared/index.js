@@ -1,21 +1,14 @@
-import element from "./element";
-import storage from "./storage";
-import cookie from "./cookie";
-import uuid from "./uuid";
-
 export default {
   install: Vue => {
-    Object.defineProperty(Vue.prototype, "$element", {
-      value: element
-    });
-    Object.defineProperty(Vue.prototype, "$storage", {
-      value: storage
-    });
-    Object.defineProperty(Vue.prototype, "$cookie", {
-      value: cookie
-    });
-    Object.defineProperty(Vue.prototype, "$uuid", {
-      value: uuid
+    let contexts = require.context(".", false, /\.js$/);
+
+    contexts.keys().forEach(key => {
+      if (key === "./index.js") return;
+
+      let auxName = `$${/\w+/.exec(key).pop()}`;
+      let auxEntity = contexts(key).default;
+
+      Object.defineProperty(Vue.prototype, auxName, { value: auxEntity });
     });
   }
 };

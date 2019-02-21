@@ -27,8 +27,9 @@
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
-  name: "Login",
+  name: "login",
   data() {
     return {
       user: {
@@ -63,7 +64,7 @@ export default {
       });
 
       this.$storage.write("state", this.$store.state);
-      this.$router.push(this.redirect || "/Dashboard");
+      this.$router.push(this.redirect || "/dashboard");
     }
   }
 };

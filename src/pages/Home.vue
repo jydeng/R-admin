@@ -66,7 +66,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  name: "Home",
+  name: "home",
   data() {
     return {
       isCollapse: true,
@@ -103,7 +103,7 @@ export default {
 
           this.logout();
           this.$storage.remove("state");
-          this.$router.push("/Login");
+          this.$router.push("/login");
           break;
 
         default:
@@ -121,25 +121,25 @@ export default {
           icon: "fa fa-fw fa-tachometer",
           id: "1",
           name: "首页",
-          url: "/Dashboard"
+          url: "/dashboard"
         },
         {
           icon: "fa fa-fw fa-table",
           id: "2",
           name: "数据表格",
-          url: "/Table"
+          url: "/baseTable"
         },
         {
           icon: "fa fa-fw fa-pencil",
           id: "3",
           name: "富文本编辑器",
-          url: "/Editor"
+          url: "/editor"
         },
         {
           icon: "fa fa-fw fa-html5",
           id: "4",
           name: "参数输入框",
-          url: "/UrlInput"
+          url: "/urlInput"
         }
       ]);
     }

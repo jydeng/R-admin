@@ -1,9 +1,13 @@
-import $http from "./axios";
-import $jsonp from "./jsonp";
-
 export default {
   install: Vue => {
-    Object.defineProperty(Vue.prototype, "$http", { value: $http });
-    Object.defineProperty(Vue.prototype, "$jsonp", { value: $jsonp });
+    let contexts = require.context(".", false, /\.js$/);
+
+    contexts.keys().forEach(key => {
+      if (key === "./index.js") return;
+      let auxName = `$${/\w+/.exec(key).pop()}`;
+      let auxEntity = contexts(key).default;
+
+      Object.defineProperty(Vue.prototype, auxName, { value: auxEntity });
+    });
   }
 };

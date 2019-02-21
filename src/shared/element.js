@@ -54,6 +54,7 @@ const dateShortcuts = [
   }
 ];
 
+// 生成字段长度校验
 const gLengthValidator = function(length, message) {
   return function(rule, value, callback) {
     if (value.length > length) {

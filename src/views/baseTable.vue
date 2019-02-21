@@ -51,7 +51,7 @@
 </template>
 <script>
 export default {
-  name: "Table",
+  name: "baseTable",
   data() {
     return {
       selectedDate: ["", ""],

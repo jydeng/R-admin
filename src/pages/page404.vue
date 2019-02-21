@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "NotFound",
+  name: "page404",
   methods: {
     goHome() {
       this.$router.push("/");

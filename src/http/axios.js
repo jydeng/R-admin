@@ -64,7 +64,7 @@ Axios.interceptors.response.use(
         });
 
         store.dispatch("logout");
-        router.push("/Login");
+        router.push("/login");
         return Promise.reject(error.message);
       default:
         Notification({

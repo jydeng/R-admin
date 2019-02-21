@@ -6,7 +6,7 @@
         <RurlInput v-model="test" placeholder="请输入监控链地址" :position="true"></RurlInput>
       </el-col>
       <el-col :md="6" :sm="24">
-        <el-button type="primary" plain @click="dialogVisible=true">弹窗</el-button>
+        <el-button type="primary" plain @click="dialogVisible=true">在弹窗中使用</el-button>
       </el-col>
     </el-row>
     <el-dialog title="在弹窗中使用" :visible.sync="dialogVisible">
@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  name: "UrlInput",
+  name: "urlInput",
   data() {
     return {
       dialogVisible: false,

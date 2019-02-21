@@ -1,7 +1,7 @@
 <template>
   <el-row class="dashboard">
     <!-- 切换平台 -->
-    <el-tabs class="" v-model="activeChanel" @tab-click="handleSearch">
+    <el-tabs class v-model="activeChanel" @tab-click="handleSearch">
       <el-tab-pane label="全平台" name="all"></el-tab-pane>
       <el-tab-pane label="渠道A" name="a"></el-tab-pane>
       <el-tab-pane label="渠道B" name="b"></el-tab-pane>
@@ -12,15 +12,16 @@
     <el-row :gutter="20">
       <el-col :sm="24" :md="8">
         <div class="legend">
-          <h3 class="legend-title">
-            今日实时消耗 (元)
-            <el-tooltip effect="dark" content="计算当天 00:00-23:59 消耗总额" placement="top">
+          <h3 class="legend-title">今日实时消耗 (元)
+            <el-tooltip
+              effect="dark"
+              content="计算当天 00:00-23:59 消耗总额"
+              placement="top"
+            >
               <i class="fa fa-question-circle"></i>
             </el-tooltip>
           </h3>
-          <div class="legend-content" :style="{color:themeColor}">
-            999999
-          </div>
+          <div class="legend-content" :style="{color:themeColor}">999999</div>
         </div>
       </el-col>
     </el-row>
@@ -28,8 +29,16 @@
     <!-- 日期选择 -->
     <el-row :gutter="20" class="dateRange">
       <el-col :sm="24" :md="6">
-        <el-date-picker v-model="selectedDate" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions" @change="handleSearch">
-        </el-date-picker>
+        <el-date-picker
+          v-model="selectedDate"
+          format="yyyy 年 MM 月 dd 日"
+          value-format="yyyy-MM-dd"
+          type="daterange"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="pickerOptions"
+          @change="handleSearch"
+        ></el-date-picker>
       </el-col>
       <el-col :sm="24" :md="6">
         <el-button>
@@ -47,7 +56,14 @@
 
     <!-- 数据表格 -->
     <el-row class="tablePart">
-      <Rtable :columns="columns" :tableData="tableData" :totalSize="totalSize" :loading="loading" @changePage="handleChangePage" :height="250"></Rtable>
+      <Rtable
+        :columns="columns"
+        :tableData="tableData"
+        :totalSize="totalSize"
+        :loading="loading"
+        @changePage="handleChangePage"
+        :height="250"
+      ></Rtable>
     </el-row>
   </el-row>
 </template>
@@ -66,7 +82,7 @@ require("echarts/lib/component/legend");
 require("echarts/lib/component/tooltip");
 
 export default {
-  name: "Dashboard",
+  name: "dashboard",
   data() {
     return {
       activeChanel: "all",
