@@ -172,6 +172,7 @@ export default {
     this.$watch("value", {
       handler: function(val) {
         this.url = val;
+        this.url2params(this.search(this.value));
       }
     });
   }

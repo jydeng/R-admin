@@ -1,7 +1,8 @@
+const production = process.env.NODE_ENV === "production";
 module.exports = {
-  baseUrl: process.env.NODE_ENV === "production" ? "./" : "/",
+  baseUrl: production ? "./" : "/",
   configureWebpack: () => {
-    if (!process.env.NODE_ENV === "production") {
+    if (!production) {
       return {
         devServer: {
           disableHostCheck: true,

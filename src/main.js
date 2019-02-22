@@ -9,34 +9,34 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import Element from "element-ui";
+import element from "element-ui";
 
-import R from "./components";
-import Http from "./http";
-import Filter from "./filter";
-import Directive from "./directive";
-import Shared from "./shared";
+import r from "./components";
+import http from "./http";
+import filter from "./filter";
+import directive from "./directive";
+import shared from "./shared";
 
 // 生产环境不发出提示
 Vue.config.productionTip = false;
 
 // 引用elementUI
-Vue.use(Element, { size: "small" });
+Vue.use(element, { size: "small" });
 
 // 引用自定义组件
-Vue.use(R);
+Vue.use(r);
 
 // 引用Ajax库
-Vue.use(Http);
+Vue.use(http);
 
 // 引用自定义管道函数
-Vue.use(Filter);
+Vue.use(filter);
 
 // 引用自定义指令函数
-Vue.use(Directive);
+Vue.use(directive);
 
 // 引用公共函数
-Vue.use(Shared);
+Vue.use(shared);
 
 new Vue({
   router,
