@@ -1,14 +1,14 @@
 <template>
-  <el-header>
-    <!-- <a href="." class="logo"></a>
-    <a href="javascript:void(0);" class="toggle" @click="asideToggle">
+  <div class="layoutHeader">
+    <a class="logo"></a>
+    <a class="toggle" @click="asideToggle">
       <i class="fa fa-th-list"></i>
     </a>
     <Rtheme :themeColor="themeColor" @changeThemeColor="changeColor"></Rtheme>
     <a class="space"></a>
     <el-dropdown class="userinfo" @command="userDropdown">
       <span>
-        <img src="@/assets/profile.jpg" alt="profile">
+        <img src="@/assets/profile.jpg" alt="profile" />
         {{ user.username }}
         <i class="fa fa-sort-down"></i>
       </span>
@@ -17,9 +17,8 @@
           <i class="fa fa-fw fa-power-off"></i>注销
         </el-dropdown-item>
       </el-dropdown-menu>
-    </el-dropdown> -->
-    1234546
-  </el-header>
+    </el-dropdown>
+  </div>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
@@ -54,44 +53,45 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// .el-header {
-//   display: flex;
-//   align-items: center;
-//   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-//   background: #fff;
+.layoutHeader {
+  display: flex;
+  align-items: center;
+  height: 100%;
 
-//   .logo {
-//     height: 100%;
-//     width: 100px;
-//     vertical-align: middle;
-//     background: url(../assets/profile.jpg) no-repeat center center;
-//     background-size: 40%;
-//   }
+  .logo {
+    height: 100%;
+    width: 100px;
+    cursor: pointer;
+    background-image: url(../assets/logo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50px;
+  }
 
-//   .toggle {
-//     color: #222;
-//     margin-right: 10px;
-//   }
+  .toggle {
+    color: #222;
+    margin-right: 15px;
+    cursor: pointer;
+  }
 
-//   .space {
-//     flex-grow: 1;
-//   }
+  .space {
+    flex-grow: 1;
+  }
 
-//   .userinfo {
-//     font-size: 13px;
-//     color: #666;
-//     span {
-//       height: 30px;
-//       line-height: 30px;
-//       img {
-//         width: 30px;
-//         border-radius: 50%;
-//         vertical-align: bottom;
-//       }
-//       .fa-sort-down {
-//         vertical-align: 2px;
-//       }
-//     }
-//   }
-// }
+  .userinfo {
+    font-size: 13px;
+    color: #666;
+    span {
+      line-height: 30px;
+      img {
+        width: 30px;
+        border-radius: 50%;
+        vertical-align: bottom;
+      }
+      .fa-sort-down {
+        vertical-align: 2px;
+      }
+    }
+  }
+}
 </style>

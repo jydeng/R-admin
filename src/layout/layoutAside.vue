@@ -52,6 +52,7 @@ export default {
       height: 100px;
       width: 100px;
       margin: 0 auto;
+      box-shadow: 0 1px 1px#ddd;
       border-radius: 50%;
     }
   }

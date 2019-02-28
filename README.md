@@ -1,6 +1,7 @@
 <div align="center"><img src="./public/favicon.ico" width="100"></div>
 
-基于Vue2.0的后台管理系统原型。
+## 介绍
+基于Vue2.0构建的后台管理系统原型。
 
 ## 功能
 
