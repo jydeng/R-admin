@@ -1,5 +1,9 @@
 <template>
-  <el-color-picker size="mini" v-model="theme" :predefine="predefine"></el-color-picker>
+  <el-color-picker
+    size="mini"
+    v-model="theme"
+    :predefine="predefine"
+  ></el-color-picker>
 </template>
 
 <script>

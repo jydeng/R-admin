@@ -11,7 +11,7 @@
         :height="height"
         @selection-change="handleSelection"
       >
-        <template v-for="(column,index) in columns">
+        <template v-for="(column, index) in columns">
           <!-- 插槽 -->
           <slot v-if="column.slotName" :name="column.slotName"></slot>
           <!-- normal -->

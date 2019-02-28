@@ -8,11 +8,11 @@
       :before-upload="before"
       :show-file-list="false"
     >
-      <img v-if="value" :src="value" class="uploader-img">
+      <img v-if="value" :src="value" class="uploader-img" />
       <i v-else class="fa fa-fw fa-cloud-upload uploader-icon">点击上传</i>
     </el-upload>
 
-    <span v-if="label" class="label">{{label}}</span>
+    <span v-if="label" class="label">{{ label }}</span>
 
     <el-input
       v-if="input"

@@ -15,7 +15,11 @@
         ></el-date-picker>
       </el-col>
       <el-col :md="6" :sm="24">
-        <el-input placeholder="请输入产品名" clearable v-model="product_name"></el-input>
+        <el-input
+          placeholder="请输入产品名"
+          clearable
+          v-model="product_name"
+        ></el-input>
       </el-col>
       <el-col :md="6" :sm="24">
         <el-button type="primary" plain @click="handleSearch">

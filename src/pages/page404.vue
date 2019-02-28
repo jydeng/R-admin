@@ -1,6 +1,6 @@
 <template>
   <div class="notFound">
-    <img src="@/assets/404.gif" alt="404">
+    <img src="@/assets/404.gif" alt="404" />
     <!-- <p>Oh No~ 页面走丢了，或者你没有访问这个页面的权限！(〃'▽'〃)</p> -->
     <el-button type="primary" @click="goHome">回首页</el-button>
   </div>

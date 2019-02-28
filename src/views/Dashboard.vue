@@ -12,7 +12,8 @@
     <el-row :gutter="20">
       <el-col :sm="24" :md="8">
         <div class="legend">
-          <h3 class="legend-title">今日实时消耗 (元)
+          <h3 class="legend-title">
+            今日实时消耗 (元)
             <el-tooltip
               effect="dark"
               content="计算当天 00:00-23:59 消耗总额"
@@ -21,7 +22,9 @@
               <i class="fa fa-question-circle"></i>
             </el-tooltip>
           </h3>
-          <div class="legend-content" :style="{color:themeColor}">999999</div>
+          <div class="legend-content" :style="{ color: themeColor }">
+            999999
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -41,16 +44,17 @@
         ></el-date-picker>
       </el-col>
       <el-col :sm="24" :md="6">
-        <el-button>
-          <i class="fa fa-fw fa-download"></i> 下载
-        </el-button>
+        <el-button> <i class="fa fa-fw fa-download"></i> 下载 </el-button>
       </el-col>
     </el-row>
 
     <!-- 图表 -->
     <el-row class="chartPart">
       <el-col :sm="24" :md="24">
-        <div id="chart" :style="{width:'calc(100% - 10px)',height:'320px'}"></div>
+        <div
+          id="chart"
+          :style="{ width: 'calc(100% - 10px)', height: '320px' }"
+        ></div>
       </el-col>
     </el-row>
 

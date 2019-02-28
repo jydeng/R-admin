@@ -2,12 +2,12 @@
   <el-row class="breadcrumb">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item
-        v-for="(link,index) in links"
+        v-for="(link, index) in links"
         :key="index"
         :to="{ path: link.url }"
       >
         <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i>
-        {{link.name}}
+        {{ link.name }}
       </el-breadcrumb-item>
     </el-breadcrumb>
   </el-row>

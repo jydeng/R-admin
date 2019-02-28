@@ -13,7 +13,7 @@
     <!-- 加点动画 -->
     <transition name="params">
       <!-- 参数输入div  -->
-      <div :class="{'params':true,'position':position}" v-show="opened">
+      <div :class="{ params: true, position: position }" v-show="opened">
         <!-- 第一项 -->
         <div class="param">
           <el-input placeholder="key" v-model="first.k"></el-input>
@@ -25,7 +25,7 @@
         </div>
 
         <!-- 可以增加的项 -->
-        <div class="param" v-for="(param,i) in params" :key="i">
+        <div class="param" v-for="(param, i) in params" :key="i">
           <el-input placeholder="key" v-model="param.k"></el-input>
           <el-input placeholder="value" v-model="param.v" title="移除本项">
             <el-button type="text" slot="suffix" @click="remove(i)">
