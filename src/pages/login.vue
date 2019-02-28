@@ -1,40 +1,41 @@
 <template>
   <el-row class="wrapper">
     <el-col :md="12" class="left">
-      <div class="title"></div>
+      <div class="logo"></div>
     </el-col>
     <el-col :md="12" class="right">
-      <el-input
-        placeholder="请输入你的账号"
-        clearable
-        prefix-icon="fa fa-fw fa-user"
-        v-model="user.username"
-      ></el-input>
-      <el-input
-        placeholder="请输入你的密码"
-        type="password"
-        prefix-icon="fa fa-fw fa-key"
-        clearable
-        v-model="user.password"
-        @keyup.enter.native="handleLogin"
-      ></el-input>
-      <el-button type="primary" @click="handleLogin">
-        <i class="fa fa-fw fa-power-off"></i> 登 录
-      </el-button>
+      <div class="user">
+        <el-input
+          placeholder="请输入你的账号"
+          clearable
+          prefix-icon="fa fa-fw fa-user"
+          v-model="user.username"
+        ></el-input>
+        <el-input
+          placeholder="请输入你的密码"
+          type="password"
+          prefix-icon="fa fa-fw fa-key"
+          clearable
+          v-model="user.password"
+          @keyup.enter.native="handleLogin"
+        ></el-input>
+        <el-button type="primary" @click="handleLogin">
+          <i class="fa fa-fw fa-power-off"></i> 登 录
+        </el-button>
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <script>
 import { mapActions } from "vuex";
-
 export default {
   name: "login",
   data() {
     return {
       user: {
-        username: "",
-        password: ""
+        username: "admin",
+        password: "admin"
       },
       redirect: this.$route.query["redirect"]
     };
@@ -71,55 +72,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 外层
+@import "../style/mixin";
 .wrapper {
   width: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-
-  .el-col {
-    height: 260px;
-  }
+  @include center;
+  @include card;
 
   .left {
-    position: relative;
-    line-height: 260px;
-    border-right: 1px dotted #ddd;
-
-    // 标题
-    .title {
-      position: absolute;
-      height: 200px;
-      width: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: url(../assets/logo.png) no-repeat center center;
-      background-size: 50%;
-      margin: 0;
-      font-size: 18px;
-      text-align: center;
-      font-weight: 525;
-      color: #666666;
-    }
+    height: 260px;
+    background-image: url(../assets/logo.png);
+    background-position: center center;
+    background-size: 80px;
+    background-repeat: no-repeat;
+    border-right: dotted 1px #ddd;
   }
 
   .right {
-    padding: 40px 15px 0 15px;
-    line-height: 55px;
+    position: relative;
+    height: 260px;
 
-    // 输入框底部增加间距
-    .el-input {
-      margin-bottom: 10px;
-    }
-
-    // 制造一个block-button
-    .el-button {
+    .user {
       width: 100%;
+      @include center;
+      box-sizing: border-box;
+      padding: 0 10px;
+
+      .el-input {
+        line-height: 55px;
+      }
+      .el-button {
+        width: 100%;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -128,7 +112,11 @@ export default {
   .wrapper {
     width: 300px;
     .left {
-      display: none;
+      height: 160px;
+      border-right: none;
+    }
+    .right {
+      height: 180px;
     }
   }
 }

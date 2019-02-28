@@ -1,0 +1,16 @@
+// 垂直居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 卡片效果
+@mixin card {
+  background: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+

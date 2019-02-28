@@ -1,3 +1,10 @@
+/* 背景  */
+body {
+  background: #e2e2e2;
+  background-image: url(../assets/bg.png);
+  background-repeat: repeat-x;
+}
+
 // 路由动画
 .slide-right-enter-active,
 .slide-right-leave-active,

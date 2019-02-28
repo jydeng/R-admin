@@ -1,8 +1,9 @@
-const state = {
+const states = {
   user: { username: "", role: "" },
   themeColor: "#27B6AF",
   menu: [],
-  token: ""
+  token: "",
+  isCollapse: true
 };
 
-export default state;
+export default states;
