@@ -35,7 +35,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 // 左侧菜单
 .el-aside {
   overflow-x: hidden;

@@ -7,7 +7,7 @@ import CommonRouters from "./common";
 
 Vue.use(Router);
 
-// 从storage中恢复登录信息
+// 尝试从storage中恢复登录信息
 let state = storage.read("state");
 
 if (state && state["token"]) {

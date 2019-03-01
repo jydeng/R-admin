@@ -1,8 +1,9 @@
 <template>
   <div class="notFound">
     <img src="@/assets/404.gif" alt="404" />
-    <!-- <p>Oh No~ 页面走丢了，或者你没有访问这个页面的权限！(〃'▽'〃)</p> -->
-    <el-button type="primary" @click="goHome">回首页</el-button>
+    <el-button type="primary" @click="goHome">
+      <i class="fa fa-fw fa-home"></i> 回到首页
+    </el-button>
   </div>
 </template>
 <script>
@@ -15,7 +16,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .notFound {
   position: absolute;
   top: 50%;

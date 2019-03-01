@@ -6,15 +6,18 @@
     </a>
     <Rtheme :themeColor="themeColor" @changeThemeColor="changeColor"></Rtheme>
     <a class="space"></a>
-    <el-dropdown class="userinfo" @command="userDropdown">
+    <el-dropdown class="userinfo" trigger="click" @command="userDropdown">
       <span>
-        <img src="@/assets/profile.jpg" alt="profile" />
+        <img src="@/assets/profile.jpg" alt="profile" />&nbsp;
         {{ user.username }}
         <i class="fa fa-sort-down"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="user">
+          <i class="fa fa-fw fa-user"></i> 资料
+        </el-dropdown-item>
         <el-dropdown-item command="logout">
-          <i class="fa fa-fw fa-power-off"></i>注销
+          <i class="fa fa-fw fa-power-off"></i> 注销
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -52,7 +55,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .layoutHeader {
   display: flex;
   align-items: center;
@@ -62,7 +65,7 @@ export default {
     height: 100%;
     width: 100px;
     cursor: pointer;
-    background-image: url(../assets/logo.png);
+    background-image: url(../../assets/logo.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50px;

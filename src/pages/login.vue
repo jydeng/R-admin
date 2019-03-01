@@ -71,7 +71,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../style/mixin";
 .wrapper {
   width: 600px;

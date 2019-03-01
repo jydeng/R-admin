@@ -64,13 +64,13 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+@import "../../style/mixin.scss";
 .el-main {
   position: relative;
   margin: 10px;
   padding: 0 10px 10px 10px;
-  background: #fff;
   overflow-x: hidden;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  @include card;
 }
 </style>
