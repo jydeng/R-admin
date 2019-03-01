@@ -7,31 +7,31 @@ export default [
       {
         path: "/",
         redirect: "/dashboard",
-        meta: { auth: true }
+        meta: { index: 1, auth: true }
       },
       {
         path: "/dashboard",
         name: "dashboard",
         component: () => import("@/views/dashboard"),
-        meta: { auth: true }
+        meta: { index: 2, auth: true }
       },
       {
         path: "/baseTable",
         name: "baseTable",
         component: () => import("@/views/baseTable"),
-        meta: { auth: true }
+        meta: { index: 3, auth: true }
       },
       {
         path: "/editor",
         name: "editor",
         component: () => import("@/views/editor"),
-        meta: { auth: true }
+        meta: { index: 4, auth: true }
       },
       {
         path: "/urlInput",
         name: "urlInput",
         component: () => import("@/views/urlInput"),
-        meta: { auth: true }
+        meta: { index: 5, auth: true }
       }
     ],
     beforeEnter(to, from, next) {

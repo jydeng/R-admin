@@ -1,5 +1,7 @@
 import "normalize.css";
 import "font-awesome/css/font-awesome.min.css";
+import "./iconfont/iconfont.css";
+import "animate.css/animate.css";
 import "./style/theme.scss";
 import "./style/index.scss";
 

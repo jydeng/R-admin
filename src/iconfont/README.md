@@ -1,0 +1,1 @@
+存放阿里巴巴字体库文件，统一使用Font Class方式使用，若要增加删除字体图标，请访问[这里](http://www.iconfont.cn.com)，若要更改类名，请修改iconfont.css。

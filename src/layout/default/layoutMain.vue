@@ -52,10 +52,10 @@ export default {
       //如果to索引大于from索引,判断为前进状态,反之则为后退状态
       if (to.meta.index > from.meta.index) {
         //设置动画名称
-        this.transitionName = "slide-left";
+        this.transitionName = "slide-right";
       } else {
         //设置动画名称
-        this.transitionName = "slide-right";
+        this.transitionName = "slide-left";
       }
     }
   },
@@ -64,7 +64,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../style/mixin.scss";
 .el-main {
   position: relative;

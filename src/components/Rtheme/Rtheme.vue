@@ -63,6 +63,10 @@ export default {
           styleTag.innerText = newStyle;
           // 向父组件传递
           this.$emit("changeThemeColor", { themeColor: theme });
+          this.$message({
+            message: "更换主题色成功!",
+            type: "success"
+          });
         };
       };
 
@@ -72,6 +76,11 @@ export default {
         originalCluster,
         themeCluster
       );
+
+      this.$message({
+        message: "更换主题色中，请稍后...",
+        type: "info"
+      });
 
       // 若chalk有值，表示已经下载过脚本，执行chalkHandle即可
       if (!this.chalk) {
@@ -93,6 +102,7 @@ export default {
     // 下载CSS
     getCSSString(url, callback, variable) {
       const xhr = new XMLHttpRequest();
+
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
           // 这里去掉字体链接

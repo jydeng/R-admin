@@ -14,10 +14,11 @@
 - 基于 token 认证的权限系统
 - axios、jsonp 封装
 - cookie、sessionStorage 封装
-- FontAwesome
+- FontAwesome、iconFont
 - 富文本编辑器
-- 自定义主题
+- 自定义主题色
 - Echarts 图表
+- Animate.css
 - ......
 
 ## 使用
