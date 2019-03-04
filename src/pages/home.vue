@@ -27,7 +27,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../style/mixin.scss";
-// 最外层
 .wrapper {
   position: absolute;
   height: 100%;
@@ -36,6 +35,7 @@ export default {
   .el-header {
     @include shadow;
     background: #fff;
+    padding-left: 0;
   }
 }
 </style>

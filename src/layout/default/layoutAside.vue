@@ -11,14 +11,14 @@
       :collapse="isCollapse"
     >
       <el-menu-item v-for="m in menu" :index="m.url" :key="m.id">
-        <i :class="m.icon"></i>
+        <i :class="m.icon"></i>&nbsp;
         <span slot="title">{{ m.name }}</span>
       </el-menu-item>
     </el-menu>
   </el-aside>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "layoutAside",
   data() {
@@ -32,6 +32,41 @@ export default {
     activeMenu() {
       return /(\/[a-zA-Z]*)/.exec(this.$route.path).pop();
     }
+  },
+  methods: {
+    ...mapActions(["setmenu"]),
+    // 请求菜单
+    getMenu() {
+      this.setmenu([
+        {
+          icon: "fa fa-tachometer",
+          id: "1",
+          name: "首页",
+          url: "/dashboard"
+        },
+        {
+          icon: "fa fa-table",
+          id: "2",
+          name: "数据表格",
+          url: "/baseTable"
+        },
+        {
+          icon: "fa fa-pencil",
+          id: "3",
+          name: "富文本编辑器",
+          url: "/editor"
+        },
+        {
+          icon: "fa fa-html5",
+          id: "4",
+          name: "参数输入框",
+          url: "/params"
+        }
+      ]);
+    }
+  },
+  mounted() {
+    this.getMenu();
   }
 };
 </script>

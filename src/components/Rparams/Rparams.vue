@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "RurlInput",
+  name: "Rparams",
   props: {
     value: String,
     placeholder: {

@@ -28,9 +28,9 @@ export default [
         meta: { index: 4, auth: true }
       },
       {
-        path: "/urlInput",
-        name: "urlInput",
-        component: () => import("@/views/urlInput"),
+        path: "/params",
+        name: "params",
+        component: () => import("@/views/params"),
         meta: { index: 5, auth: true }
       }
     ],

@@ -5,82 +5,6 @@ body {
   background-repeat: repeat-x;
 }
 
-// 路由动画
-.slide-right-enter-active,
-.slide-right-leave-active,
-.slide-left-enter-active,
-.slide-left-leave-active {
-  position: absolute;
-  width: 100%;
-  will-change: transform;
-  transition: all 1.5s;
-}
-.slide-right-enter {
-  opacity: 0;
-  transform: translate3d(-100%, 0, 0);
-}
-.slide-right-leave-active {
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-}
-.slide-left-enter {
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-}
-.slide-left-leave-active {
-  opacity: 0;
-  transform: translate3d(-100%, 0, 0);
-}
-
-/* 面包屑导航 */
-.breadcrumb {
-  padding: 15px 10px 5px 10px;
-  font-size: 12px;
-
-  .el-breadcrumb {
-    font-size: 13px;
-  }
-}
-
-/* 查询条件部分 */
-.searchPart {
-  padding: 15px 0;
-
-  .el-date-editor,
-  .el-select {
-    width: 100% !important;
-  }
-}
-
-/* 数据表格部分 */
-.tablePart {
-  .el-table thead th {
-    color: #606266;
-    font-weight: 400;
-    background: #f5f7fa;
-  }
-}
-
-/* 修改Rtable 分页栏的位置 */
-.el-pagination {
-  margin-top: 10px;
-  text-align: right;
-}
-
-/* 加粗显示数据 */
-.detail {
-  font-weight: 600;
-  font-size: 14px;
-  padding-left: 10px;
-}
-
-/* 字段标题 */
-.lbl {
-  font-size: 14px;
-  padding: 0 10px;
-  color: #222;
-}
-
 /* 兼容手机端 */
 @media screen and (max-width: 768px) {
   .el-col {
@@ -89,7 +13,6 @@ body {
   .el-button + .el-button {
     margin-left: 5px;
   }
-
   .el-pagination {
     margin-top: 10px;
     text-align: center;

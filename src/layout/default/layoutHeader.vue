@@ -63,7 +63,7 @@ export default {
 
   .logo {
     height: 100%;
-    width: 100px;
+    width: 80px;
     cursor: pointer;
     background-image: url(../../assets/logo.png);
     background-repeat: no-repeat;

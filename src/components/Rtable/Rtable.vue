@@ -105,3 +105,16 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+/* table样式 */
+.el-table thead th {
+  color: #606266;
+  font-weight: 400;
+  background: #f5f7fa;
+}
+/* 修改Rtable 分页栏的位置 */
+.el-pagination {
+  margin-top: 10px;
+  text-align: right;
+}
+</style>

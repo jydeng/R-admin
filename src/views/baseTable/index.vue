@@ -1,8 +1,7 @@
 <template>
   <el-row>
     <Rbreadcrumb></Rbreadcrumb>
-
-    <el-row class="searchPart" :gutter="10">
+    <RsearchPart>
       <el-col :md="6" :sm="24">
         <el-date-picker
           v-model="selectedDate"
@@ -26,9 +25,9 @@
           <i class="fa fa-fw fa-search"></i> 搜索
         </el-button>
       </el-col>
-    </el-row>
+    </RsearchPart>
 
-    <el-row class="tablePart">
+    <RtablePart>
       <Rtable
         :columns="columns"
         :tableData="tableData"
@@ -50,7 +49,7 @@
           </template>
         </el-table-column>
       </Rtable>
-    </el-row>
+    </RtablePart>
   </el-row>
 </template>
 <script>

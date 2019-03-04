@@ -10,6 +10,14 @@
         {{ link.name }}
       </el-breadcrumb-item>
     </el-breadcrumb>
+    <el-button
+      type="text"
+      class="closePage"
+      title="关闭页面"
+      @click="closePage"
+    >
+      <i class="fa fa-remove"></i>
+    </el-button>
   </el-row>
 </template>
 <script>
@@ -45,6 +53,32 @@ export default {
 
       return result;
     }
+  },
+  methods: {
+    closePage() {
+      this.$router.push("/");
+    }
   }
 };
 </script>
+<style lang="scss" scoped>
+.breadcrumb {
+  padding: 0 10px;
+
+  .el-breadcrumb {
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .closePage {
+    position: absolute;
+    right: 5px;
+    top: 0;
+
+    :hover {
+      color: red;
+    }
+  }
+}
+</style>

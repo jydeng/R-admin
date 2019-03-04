@@ -3,11 +3,11 @@
     <Rbreadcrumb></Rbreadcrumb>
     <el-row class="searchPart" :gutter="10">
       <el-col :md="6" :sm="24">
-        <RurlInput
+        <Rparams
           v-model="test"
           placeholder="请输入监控链地址"
           :position="true"
-        ></RurlInput>
+        ></Rparams>
       </el-col>
       <el-col :md="6" :sm="24">
         <el-button type="primary" plain @click="dialogVisible = true"
@@ -22,7 +22,7 @@
 </template>
 <script>
 export default {
-  name: "urlInput",
+  name: "params",
   data() {
     return {
       dialogVisible: false,

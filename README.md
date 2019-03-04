@@ -1,7 +1,7 @@
 <div align="center"><img src="./public/favicon.ico" width="100"></div>
 
 ## 介绍
-基于Vue2.0构建的后台管理系统原型。
+基于Vue2.0构建的后台管理系统原型[R-admin](http://123.207.117.50)。
 
 ## 功能
 
@@ -25,7 +25,7 @@
 
 - 初始化
 
-```cmd
+```shell
 git clone  git@github.com:jydeng/vue-admin.git
 cd vue-admin
 yarn
@@ -33,13 +33,13 @@ yarn
 
 - 开发调试
 
-```cmd
+```shell
 yarn serve
 ```
 
 - 打包上线
 
-```cmd
+```shell
 yarn lint
 yarn build
 ```

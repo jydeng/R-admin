@@ -6,45 +6,12 @@
   </el-main>
 </template>
 <script>
-import { mapActions } from "vuex";
 export default {
   name: "layoutMain",
   data() {
     return {
       transitionName: ""
     };
-  },
-  methods: {
-    ...mapActions(["setmenu"]),
-    // 请求菜单
-    getMenu() {
-      this.setmenu([
-        {
-          icon: "fa fa-fw fa-tachometer",
-          id: "1",
-          name: "首页",
-          url: "/dashboard"
-        },
-        {
-          icon: "fa fa-fw fa-table",
-          id: "2",
-          name: "数据表格",
-          url: "/baseTable"
-        },
-        {
-          icon: "fa fa-fw fa-pencil",
-          id: "3",
-          name: "富文本编辑器",
-          url: "/editor"
-        },
-        {
-          icon: "fa fa-fw fa-html5",
-          id: "4",
-          name: "参数输入框",
-          url: "/urlInput"
-        }
-      ]);
-    }
   },
   watch: {
     //使用watch 监听$router的变化
@@ -58,9 +25,6 @@ export default {
         this.transitionName = "slide-left";
       }
     }
-  },
-  mounted() {
-    this.getMenu();
   }
 };
 </script>
@@ -69,8 +33,35 @@ export default {
 .el-main {
   position: relative;
   margin: 10px;
-  padding: 0 10px 10px 10px;
+  padding: 5px 10px 10px 10px;
   overflow-x: hidden;
   @include card;
+}
+
+// 路由动画
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  position: absolute;
+  width: 100%;
+  will-change: transform;
+  transition: all 1.5s;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>
