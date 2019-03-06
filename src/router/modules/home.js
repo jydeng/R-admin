@@ -36,7 +36,7 @@ export default [
     ],
     beforeEnter(to, from, next) {
       if (to.meta.auth) {
-        if (store.state.token) {
+        if (store.state.common.token) {
           next();
         } else {
           next({

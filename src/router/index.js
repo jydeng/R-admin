@@ -9,11 +9,13 @@ Vue.use(Router);
 
 // 尝试从storage中恢复登录信息
 let state = storage.read("state");
-
-if (state && state["token"]) {
-  store.dispatch("login", {
-    user: { username: state.user.username, role: state.user.role },
-    token: state.token
+if (state && state["common"]["token"]) {
+  store.dispatch("common/login", {
+    user: {
+      username: state.common.user.username,
+      role: state.common.user.role
+    },
+    token: state.common.token
   });
 }
 

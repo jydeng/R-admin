@@ -28,10 +28,10 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "layoutHeader",
   computed: {
-    ...mapGetters(["user", "themeColor"])
+    ...mapGetters("common", ["user", "themeColor"])
   },
   methods: {
-    ...mapActions(["logout", "asideCollapse", "changeThemeColor"]),
+    ...mapActions("common", ["logout", "asideCollapse", "changeThemeColor"]),
     asideToggle() {
       this.asideCollapse();
     },

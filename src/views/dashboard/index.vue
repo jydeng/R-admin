@@ -111,7 +111,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["themeColor"])
+    ...mapGetters("common", ["themeColor"])
   },
   methods: {
     // 搜索

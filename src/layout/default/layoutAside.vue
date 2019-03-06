@@ -28,13 +28,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["asideWidth", "isCollapse", "menu"]),
+    ...mapGetters("common", ["asideWidth", "isCollapse", "menu"]),
     activeMenu() {
       return /(\/[a-zA-Z]*)/.exec(this.$route.path).pop();
     }
   },
   methods: {
-    ...mapActions(["setmenu"]),
+    ...mapActions("common", ["setmenu"]),
     // 请求菜单
     getMenu() {
       this.setmenu([

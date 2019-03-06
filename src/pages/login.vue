@@ -41,7 +41,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions("common", ["login"]),
     handleLogin() {
       if (this.user.username.trim().length === 0) {
         this.$notify({
