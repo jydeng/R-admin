@@ -1,7 +1,7 @@
 <template>
   <el-aside :style="{ width: asideWidth }">
     <div class="profile" v-show="!isCollapse">
-      <img src="@/assets/profile.jpg" alt="profile" />
+      <img src="@/assets/profile.png" alt="profile" />
     </div>
     <el-menu
       :router="true"
@@ -89,6 +89,7 @@ export default {
       margin: 0 auto;
       box-shadow: 0 1px 1px#ddd;
       border-radius: 50%;
+      background: #fff;
     }
   }
 

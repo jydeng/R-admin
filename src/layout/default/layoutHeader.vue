@@ -8,7 +8,7 @@
     <a class="space"></a>
     <el-dropdown class="userinfo" trigger="click" @command="userDropdown">
       <span>
-        <img src="@/assets/profile.jpg" alt="profile" />&nbsp;
+        <img src="@/assets/profile.png" alt="profile" />&nbsp;
         {{ user.username }}
         <i class="fa fa-sort-down"></i>
       </span>

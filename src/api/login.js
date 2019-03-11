@@ -1,4 +1,5 @@
-import $axios from "@/ajax/axios";
+import $axios from "@/http/axios";
+import util from "@/shared/util";
 
 /**
  * 登录
@@ -9,7 +10,7 @@ export function loginByApi(username, password) {
   const url = "/login";
   const data = { username, password };
 
-  return $axios.post(url, data);
+  return util.to($axios.post(url, data));
 }
 
 /**
@@ -20,5 +21,6 @@ export function getMenuByApi(token) {
   const url = "/getMenu";
   const params = { token };
 
-  return $axios.get(url, { params });
+  return util.to($axios.get(url, { params }));
 }
+
