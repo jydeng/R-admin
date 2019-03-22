@@ -1,67 +1,4 @@
-// 由一个组件，向上找到最近的指定组件
-function findComponentUpward(context, componentName) {
-  let parent = context.$parent;
-  let name = parent.$options.name;
-
-  while (parent && (!name || [componentName].indexOf(name) < 0)) {
-    parent = parent.$parent;
-    if (parent) name = parent.$options.name;
-  }
-  return parent;
-}
-
-// 由一个组件，向上找到所有的指定组件
-function findComponentsUpward(context, componentName) {
-  let parents = [];
-  const parent = context.$parent;
-
-  if (parent) {
-    if (parent.$options.name === componentName) parents.push(parent);
-    return parents.concat(findComponentsUpward(parent, componentName));
-  } else {
-    return [];
-  }
-}
-
-// 由一个组件，向下找到最近的指定组件
-function findComponentDownward(context, componentName) {
-  const childrens = context.$children;
-  let children = null;
-
-  if (childrens.length) {
-    for (const child of childrens) {
-      const name = child.$options.name;
-
-      if (name === componentName) {
-        children = child;
-        break;
-      } else {
-        children = findComponentDownward(child, componentName);
-        if (children) break;
-      }
-    }
-  }
-  return children;
-}
-
-// 由一个组件，向下找到所有指定的组件
-function findComponentsDownward(context, componentName) {
-  return context.$children.reduce((components, child) => {
-    if (child.$options.name === componentName) components.push(child);
-    const foundChilds = findComponentsDownward(child, componentName);
-    return components.concat(foundChilds);
-  }, []);
-}
-
-// 由一个组件，找到指定组件的兄弟组件
-function findBrothersComponents(context, componentName, exceptMe = true) {
-  let res = context.$parent.$children.filter(item => {
-    return item.$options.name === componentName;
-  });
-  let index = res.findIndex(item => item._uid === context._uid);
-  if (exceptMe) res.splice(index, 1);
-  return res;
-}
+import moment from "moment";
 
 // 数据类型
 function typeOf(obj) {
@@ -118,7 +55,7 @@ function uuid(len = 32) {
   return str;
 }
 
-// to.js
+// 包装promsie,为async服务
 function to(promise) {
   if (!promise || !Promise.prototype.isPrototypeOf(promise)) {
     return new Promise((resolve, reject) => {
@@ -136,14 +73,63 @@ function to(promise) {
     });
 }
 
+// 计算百分比
+function percentage(part, whole, digit = 2) {
+  if (parseFloat(part) > 0 && parseFloat(whole) > 0) {
+    return `${((parseFloat(part) / parseFloat(whole)) * 100).toFixed(digit)}%`;
+  } else {
+    return `0%`;
+  }
+}
+
+// 计算平均值
+function avg(part, whole, digit = 2) {
+  if (parseFloat(part) > 0 && parseFloat(whole) > 0) {
+    return `${(parseFloat(whole) / parseFloat(part)).toFixed(digit)}`;
+  } else {
+    return `0.00`;
+  }
+}
+
+// 格式化数字
+function parseNum(num, digit = 2) {
+  if (num) {
+    return parseFloat(num).toFixed(digit);
+  } else {
+    return 0;
+  }
+}
+
+// 日期格式化
+function fewDays(days, format = "YYYY-MM-DD") {
+  return moment()
+    .add(days, "days")
+    .format(format);
+}
+
+// 翻译code
+function transCode(code, dist, miss = "未匹配", k = "key", v = "value") {
+  if (dist.length === 0 || !code) {
+    return miss;
+  }
+
+  let item = dist.find(t => t[k].toString() === code.toString());
+
+  if (item) {
+    return item[v];
+  } else {
+    return miss;
+  }
+}
+
 export default {
-  findComponentUpward,
-  findComponentsUpward,
-  findComponentDownward,
-  findComponentsDownward,
-  findBrothersComponents,
   typeOf,
   deepCopy,
   uuid,
-  to
+  to,
+  percentage,
+  avg,
+  parseNum,
+  fewDays,
+  transCode
 };
