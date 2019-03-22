@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["menu"]),
+    ...mapGetters("common", ["menu"]),
     links() {
       // 正则
       const reg = new RegExp("(/[a-zA-Z]*)?(/[a-zA-Z]*)?");

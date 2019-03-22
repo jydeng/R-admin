@@ -1,7 +1,9 @@
 <template>
   <el-main>
     <transition :name="transitionName">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
   </el-main>
 </template>

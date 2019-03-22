@@ -22,9 +22,7 @@
               <i class="fa fa-question-circle"></i>
             </el-tooltip>
           </h3>
-          <div class="legend-content" :style="{ color: themeColor }">
-            999999
-          </div>
+          <div class="legend-content" :style="{ color: themeColor }">999999</div>
         </div>
       </el-col>
     </el-row>
@@ -44,7 +42,9 @@
         ></el-date-picker>
       </el-col>
       <el-col :sm="24" :md="6">
-        <el-button> <i class="fa fa-fw fa-download"></i> 下载 </el-button>
+        <el-button>
+          <i class="fa fa-fw fa-download"></i> 下载
+        </el-button>
       </el-col>
     </el-row>
 
@@ -74,16 +74,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-// 按需引入 echarts
-const echarts = require("echarts/lib/echarts");
-// 引入折线图
-require("echarts/lib/chart/line");
-// 引入渐变填充
-require("echarts/lib/component/graphic");
-// 引入图例
-require("echarts/lib/component/legend");
-// 引入提示
-require("echarts/lib/component/tooltip");
+import { gChartOp, echarts } from "./chart";
 
 export default {
   name: "dashboard",
@@ -111,7 +102,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("common", ["themeColor"])
+    ...mapGetters("common", ["themeColor", "isCollapse"])
+  },
+  watch: {
+    isCollapse: () => {
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 1000);
+    }
   },
   methods: {
     // 搜索
@@ -135,105 +133,22 @@ export default {
     },
     // 接收翻页消息
     handleChangePage() {},
-    // 生成图表参数
-    gChartOp(data) {
-      // 生成渐变填充
-      const gAreaStyle = (color1, color2) => {
-        const areaStyle = {
-          normal: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              {
-                offset: 0,
-                color: color1
-              },
-              {
-                offset: 1,
-                color: color2
-              }
-            ])
-          }
-        };
-
-        return areaStyle;
-      };
-      const chartOp = {
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "cross"
-          }
-        },
-        legend: {
-          data: ["消耗", "曝光", "互动量", "点击量"],
-          selected: {
-            消耗: true,
-            曝光: false,
-            互动量: false,
-            点击量: false,
-            ECPM: false
-          }
-        },
-        grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
-          containLabel: true
-        },
-        xAxis: [
-          {
-            type: "category",
-            boundaryGap: false,
-            data: data.date
-          }
-        ],
-        yAxis: [
-          {
-            type: "value"
-          }
-        ],
-        series: [
-          {
-            name: "消耗",
-            type: "line",
-            data: data.consume,
-            areaStyle: gAreaStyle("rgb(255, 158, 68)", "rgb(255, 70, 131)")
-          },
-          {
-            name: "曝光",
-            type: "line",
-            data: data.exposure,
-            areaStyle: gAreaStyle("rgb(0, 102, 204)", "rgb(0, 204, 255)")
-          },
-          {
-            name: "互动量",
-            type: "line",
-            data: data.interact,
-            areaStyle: gAreaStyle("rgb(255, 153, 0)", "rgb(255, 204, 153)")
-          },
-          {
-            name: "点击量",
-            type: "line",
-            data: data.click,
-            areaStyle: gAreaStyle("rgb(153,0,204)", "rgb(153,102,255)")
-          }
-        ],
-        color: ["#FF3300", "#0099CC", "#FF9900", "#9933CC"]
-      };
-
-      return chartOp;
-    },
     // 绘制图表
     handleDrawChart(data) {
-      const chartOp = this.gChartOp(data);
+      const chartOp = gChartOp(data);
       if (this.chart === null) {
         this.chart = echarts.init(document.getElementById("chart"));
+        window.addEventListener("resize", this.chart.resize);
       }
       this.chart.setOption(chartOp);
     }
   },
-  mounted() {
+  activated() {
     // 初始化查询一次
     this.handleSearch();
+  },
+  deactivated() {
+    window.removeEventListener("resize", this.chart.resize);
   }
 };
 </script>

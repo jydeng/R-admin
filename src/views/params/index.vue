@@ -16,7 +16,7 @@
       </el-col>
     </el-row>
     <el-dialog title="在弹窗中使用" :visible.sync="dialogVisible">
-      <RurlInput v-model="test" placeholder="请输入监控链地址"></RurlInput>
+      <Rparams v-model="test" placeholder="请输入监控链地址"></Rparams>
     </el-dialog>
   </el-row>
 </template>

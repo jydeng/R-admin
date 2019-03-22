@@ -23,4 +23,3 @@ export function getMenuByApi(token) {
 
   return util.to($axios.get(url, { params }));
 }
-

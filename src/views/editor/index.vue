@@ -39,7 +39,7 @@ export default {
       alert(this.content);
     }
   },
-  mounted() {
+  activated() {
     this.initEditor();
   }
 };

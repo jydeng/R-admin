@@ -93,7 +93,7 @@ export default {
       console.log(row.product_name);
     }
   },
-  mounted() {
+  activated() {
     this.handleSearch();
   }
 };
