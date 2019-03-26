@@ -5,13 +5,14 @@
 </template>
 <script>
 export default {
-  name: "RsearchPart"
+  name: "iSearchPart"
 };
 </script>
 <style lang="scss">
 .searchPart {
   padding: 10px 0;
 
+  // 强制el-date、el-select铺满
   .el-date-editor,
   .el-select {
     width: 100% !important;

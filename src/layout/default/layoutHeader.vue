@@ -4,7 +4,7 @@
     <a class="toggle" @click="asideToggle">
       <i class="fa fa-th-list"></i>
     </a>
-    <Rtheme :themeColor="themeColor" @changeThemeColor="changeColor"></Rtheme>
+    <i-theme :themeColor="themeColor" @changeThemeColor="changeColor"></i-theme>
     <a class="space"></a>
     <el-dropdown class="userinfo" trigger="click" @command="userDropdown">
       <span>

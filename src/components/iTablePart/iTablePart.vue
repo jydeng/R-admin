@@ -1,10 +1,10 @@
 <template>
-  <el-row class="tablePart">
+  <div class="tablePart">
     <slot></slot>
-  </el-row>
+  </div>
 </template>
 <script>
 export default {
-  name: "RtablePart"
+  name: "iTablePart"
 };
 </script>

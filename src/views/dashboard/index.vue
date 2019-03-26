@@ -1,19 +1,10 @@
 <template>
-  <el-row class="dashboard">
-    <!-- 切换平台 -->
-    <el-tabs class v-model="activeChanel" @tab-click="handleSearch">
-      <el-tab-pane label="全平台" name="all"></el-tab-pane>
-      <el-tab-pane label="渠道A" name="a"></el-tab-pane>
-      <el-tab-pane label="渠道B" name="b"></el-tab-pane>
-      <el-tab-pane label="渠道C" name="c"></el-tab-pane>
-    </el-tabs>
-
-    <!-- 今日消耗 -->
+  <div class="dashboard">
     <el-row :gutter="20">
       <el-col :sm="24" :md="8">
         <div class="legend">
           <h3 class="legend-title">
-            今日实时消耗 (元)
+            今日消耗 (元)
             <el-tooltip
               effect="dark"
               content="计算当天 00:00-23:59 消耗总额"
@@ -22,12 +13,13 @@
               <i class="fa fa-question-circle"></i>
             </el-tooltip>
           </h3>
-          <div class="legend-content" :style="{ color: themeColor }">999999</div>
+          <div class="legend-content" :style="{ color: themeColor }">
+            999999
+          </div>
         </div>
       </el-col>
     </el-row>
 
-    <!-- 日期选择 -->
     <el-row :gutter="20" class="dateRange">
       <el-col :sm="24" :md="6">
         <el-date-picker
@@ -42,13 +34,10 @@
         ></el-date-picker>
       </el-col>
       <el-col :sm="24" :md="6">
-        <el-button>
-          <i class="fa fa-fw fa-download"></i> 下载
-        </el-button>
+        <el-button> <i class="fa fa-fw fa-download"></i> 下载 </el-button>
       </el-col>
     </el-row>
 
-    <!-- 图表 -->
     <el-row class="chartPart">
       <el-col :sm="24" :md="24">
         <div
@@ -60,16 +49,17 @@
 
     <!-- 数据表格 -->
     <el-row class="tablePart">
-      <Rtable
+      <i-table
+        background
         :columns="columns"
-        :tableData="tableData"
-        :totalSize="totalSize"
-        :loading="loading"
-        @changePage="handleChangePage"
-        :height="250"
-      ></Rtable>
+        :data="tableData"
+        :total="totalSize"
+        :isLoading="loading"
+        :height="270"
+        @truningPage="handleChangePage"
+      ></i-table>
     </el-row>
-  </el-row>
+  </div>
 </template>
 
 <script>
@@ -116,13 +106,13 @@ export default {
     handleSearch() {
       const data = {
         date: [
-          "2018-04-21",
-          "2018-04-22",
-          "2018-04-23",
-          "2018-04-24",
-          "2018-04-25",
-          "2018-04-26",
-          "2018-04-27"
+          "2019-01-02",
+          "2019-01-03",
+          "2019-01-04",
+          "2019-01-05",
+          "2019-01-06",
+          "2019-01-07",
+          "2019-01-08"
         ],
         consume: [120, 132, 101, 134, 90, 230, 210],
         exposure: [82, 93, 90, 94, 190, 130, 320],

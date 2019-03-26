@@ -15,7 +15,7 @@ const original = "#409EFF";
 const current = "#27B6AF";
 
 export default {
-  name: "Rtheme",
+  name: "iTheme",
   props: {
     themeColor: String
   },

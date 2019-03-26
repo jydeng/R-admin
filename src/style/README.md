@@ -1,1 +1,1 @@
-存放SCSS文件，index：主要文件，theme：主题相关，mixin：SCSS共用函数。
+/style: 主题与mixin

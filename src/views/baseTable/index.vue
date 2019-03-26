@@ -1,7 +1,7 @@
 <template>
-  <el-row>
-    <Rbreadcrumb></Rbreadcrumb>
-    <RsearchPart>
+  <div>
+    <i-breadcrumb></i-breadcrumb>
+    <i-searchPart>
       <el-col :md="6" :sm="24">
         <el-date-picker
           v-model="selectedDate"
@@ -21,23 +21,24 @@
         ></el-input>
       </el-col>
       <el-col :md="6" :sm="24">
-        <el-button type="primary" plain @click="handleSearch">
+        <el-button type="primary" plain @click="search">
           <i class="fa fa-fw fa-search"></i> 搜索
         </el-button>
       </el-col>
-    </RsearchPart>
+    </i-searchPart>
 
-    <RtablePart>
-      <Rtable
+    <i-tablePart>
+      <i-table
         :columns="columns"
-        :tableData="tableData"
-        :totalSize="totalSize"
-        :loading="loading"
-        @changePage="handleChangePage"
+        :data="tableData"
+        :total="totalSize"
+        :height="700"
+        :isLoading="loading"
+        @truningPage="truningPage"
       >
-        <el-table-column slot="operationBtn" label="操作" :width="'180px'">
-          <template slot-scope="scope">
-            <el-button type="text" @click="handleClick(scope.row)" title="报表">
+        <el-table-column slot="operationBtn" label="slot模式定义复杂列">
+          <template slot-scope="{ row }">
+            <el-button type="text" @click="click(row)" title="报表">
               <i class="fa fa-fw fa fa-line-chart"></i>
             </el-button>
             <el-button type="text" title="编辑">
@@ -48,11 +49,12 @@
             </el-button>
           </template>
         </el-table-column>
-      </Rtable>
-    </RtablePart>
-  </el-row>
+      </i-table>
+    </i-tablePart>
+  </div>
 </template>
 <script>
+import operation from "./operation";
 export default {
   name: "baseTable",
   data() {
@@ -69,7 +71,8 @@ export default {
       columns: [
         { label: "ID", prop: "id" },
         { label: "产品名", prop: "product_name" },
-        { slotName: "operationBtn" }
+        { label: "component模式定义复杂列", component: operation },
+        { slot: "operationBtn" }
       ],
       tableData: [],
       totalSize: 0,
@@ -77,7 +80,7 @@ export default {
     };
   },
   methods: {
-    handleSearch() {
+    search() {
       this.tableData = [
         { id: "1", product_name: "产品A" },
         { id: "2", product_name: "产品B" },
@@ -85,16 +88,16 @@ export default {
       ];
       this.totalSize = 3;
     },
-    handleChangePage(page) {
+    truningPage(page) {
       this.page = page;
       this.handleSearch();
     },
-    handleClick(row) {
-      console.log(row.product_name);
+    click(row) {
+      console.log(row);
     }
   },
   activated() {
-    this.handleSearch();
+    this.search();
   }
 };
 </script>

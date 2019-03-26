@@ -57,9 +57,10 @@ yarn build
 - Path Intellisense
 - Prettier
 - ESLint
+- Onew Dark Pro
 
 VSCode 配置文件已经添加到项目，个性化部分可自行修改，代码风格部分建议团队统一。
 
 ## License
 
-[MIT](https://github.com/jydeng/vue-admin//LICENSE)
+[MIT](https://github.com/jydeng/R-admin//LICENSE)

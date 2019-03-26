@@ -1,1 +1,1 @@
-存放vuex相关文件。
+/store: vuex

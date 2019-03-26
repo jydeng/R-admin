@@ -1,1 +1,1 @@
-封装http请求库，axios与jsonp。
+/http: 各种发请求的方式

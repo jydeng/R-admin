@@ -16,20 +16,20 @@
       <div :class="{ params: true, position: position }" v-show="opened">
         <!-- 第一项 -->
         <div class="param">
-          <el-input placeholder="key" v-model="first.k"></el-input>
-          <el-input placeholder="value" v-model="first.v">
+          <el-input placeholder="key" v-model.lazy="first.k"></el-input>
+          <el-input placeholder="value" v-model.lazy="first.v">
             <el-button type="text" slot="suffix" @click="add" title="增加一项">
-              <i class="fa fa-fw fa-plus"></i>
+              <i class="el-icon-plus"></i>
             </el-button>
           </el-input>
         </div>
 
         <!-- 可以增加的项 -->
         <div class="param" v-for="(param, i) in params" :key="i">
-          <el-input placeholder="key" v-model="param.k"></el-input>
-          <el-input placeholder="value" v-model="param.v" title="移除本项">
+          <el-input placeholder="key" v-model.lazy="param.k"></el-input>
+          <el-input placeholder="value" v-model.lazy="param.v" title="移除本项">
             <el-button type="text" slot="suffix" @click="remove(i)">
-              <i class="fa fa-fw fa-times"></i>
+              <i class="el-icon-minus"></i>
             </el-button>
           </el-input>
         </div>
@@ -37,7 +37,7 @@
         <!-- 工具栏 -->
         <div class="tool">
           <el-button type="text" @click="opened = false" title="折叠">
-            <i class="fa fa-fw fa-chevron-up"></i>
+            <i class="el-icon-arrow-up"></i>
           </el-button>
         </div>
       </div>
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "Rparams",
+  name: "iParams",
   props: {
     value: String,
     placeholder: {
@@ -56,7 +56,7 @@ export default {
     },
     prefixicon: {
       type: String,
-      default: "fa fa-fw fa-html5"
+      default: "el-icon-edit"
     },
     position: Boolean
   },

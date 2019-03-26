@@ -634,9 +634,10 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-app@^3.4.1":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.4.1.tgz#98a0bf3f207b989e00a9ec27dd0d2d1b4f27402b"
+"@vue/babel-preset-app@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.5.1.tgz#133fe832ccb9a557ba946fa66035dbe5b9c61e59"
+  integrity sha1-Ez/oMsy5pVe6lG+mYDXb5bnGHlk=
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-decorators" "^7.1.0"
@@ -692,25 +693,28 @@
     "@vue/babel-plugin-transform-vue-jsx" "^1.0.0-beta.2"
     camelcase "^5.0.0"
 
-"@vue/cli-overlay@^3.4.1":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.4.1.tgz#f850c2f8d7cd42b475d03ec6658ccf2ec9830511"
+"@vue/cli-overlay@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.5.1.tgz#8d9214d73c8c9a303147190f1476c134ef726ff9"
+  integrity sha1-jZIU1zyMmjAxRxkPFHbBNO9yb/k=
 
-"@vue/cli-plugin-babel@^3.4.0":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.4.1.tgz#f84fe329966ab5c82c80da1bd62da4db4089090b"
+"@vue/cli-plugin-babel@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.5.1.tgz#ab8729ff53bb508613b998cdd2e25a78defd30c8"
+  integrity sha1-q4cp/1O7UIYTuZjN0uJaeN79MMg=
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.4.1"
-    "@vue/cli-shared-utils" "^3.4.1"
+    "@vue/babel-preset-app" "^3.5.1"
+    "@vue/cli-shared-utils" "^3.5.1"
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
 
-"@vue/cli-plugin-eslint@^3.4.0":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-3.4.1.tgz#59896379e12d68aefcdccac28c691cb6e23e5720"
+"@vue/cli-plugin-eslint@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-3.5.1.tgz#20b4689be35d6b2146cbde2eb6f9d2f3033a0e81"
+  integrity sha1-ILRom+NdayFGy94utvnS8wM6DoE=
   dependencies:
-    "@vue/cli-shared-utils" "^3.4.1"
+    "@vue/cli-shared-utils" "^3.5.1"
     babel-eslint "^10.0.1"
     eslint-loader "^2.1.2"
     globby "^9.0.0"
@@ -719,21 +723,22 @@
     eslint "^4.19.1"
     eslint-plugin-vue "^4.7.1"
 
-"@vue/cli-service@^3.4.0":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.4.1.tgz#65ef3ed00b8e6eeeca736308a703c264cfa280cc"
+"@vue/cli-service@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.5.1.tgz#d400ab956569a87f3947e7d6972f35c97de84145"
+  integrity sha1-1ACrlWVpqH85R+fWly81yX3oQUU=
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
-    "@vue/cli-overlay" "^3.4.1"
-    "@vue/cli-shared-utils" "^3.4.1"
-    "@vue/component-compiler-utils" "^2.5.2"
+    "@vue/cli-overlay" "^3.5.1"
+    "@vue/cli-shared-utils" "^3.5.1"
+    "@vue/component-compiler-utils" "^2.6.0"
     "@vue/preload-webpack-plugin" "^1.1.0"
     "@vue/web-component-wrapper" "^1.2.0"
     acorn "^6.1.0"
     acorn-walk "^6.1.1"
     address "^1.0.3"
-    autoprefixer "^9.4.7"
+    autoprefixer "^9.4.8"
     cache-loader "^2.0.1"
     case-sensitive-paths-webpack-plugin "^2.2.0"
     chalk "^2.4.2"
@@ -744,6 +749,7 @@
     cssnano "^4.1.10"
     debug "^4.1.1"
     dotenv "^6.2.0"
+    dotenv-expand "^4.2.0"
     escape-string-regexp "^1.0.5"
     file-loader "^3.0.1"
     fs-extra "^7.0.1"
@@ -768,17 +774,18 @@
     terser-webpack-plugin "^1.2.2"
     thread-loader "^2.1.2"
     url-loader "^1.1.2"
-    vue-loader "^15.6.2"
+    vue-loader "^15.6.4"
     webpack ">=4 < 4.29"
     webpack-bundle-analyzer "^3.0.4"
     webpack-chain "^4.11.0"
-    webpack-dev-server "^3.1.14"
+    webpack-dev-server "^3.2.0"
     webpack-merge "^4.2.1"
     yorkie "^2.0.0"
 
-"@vue/cli-shared-utils@^3.4.1":
-  version "3.4.1"
-  resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.4.1.tgz#963454d2d2bc549d027c8988666c939903be6d7e"
+"@vue/cli-shared-utils@^3.5.1":
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.5.1.tgz#71d66f06fc619ba28df279bd7d37ba1ba29c9066"
+  integrity sha1-cdZvBvxhm6KN8nm9fTe6G6KckGY=
   dependencies:
     chalk "^2.4.1"
     execa "^1.0.0"
@@ -787,15 +794,16 @@
     lru-cache "^5.1.1"
     node-ipc "^9.1.1"
     opn "^5.3.0"
-    ora "^3.0.0"
+    ora "^3.1.0"
     request "^2.87.0"
-    request-promise-native "^1.0.5"
+    request-promise-native "^1.0.7"
     semver "^5.5.0"
     string.prototype.padstart "^3.0.0"
 
-"@vue/component-compiler-utils@^2.5.1", "@vue/component-compiler-utils@^2.5.2":
+"@vue/component-compiler-utils@^2.5.1", "@vue/component-compiler-utils@^2.6.0":
   version "2.6.0"
   resolved "http://registry.npm.taobao.org/@vue/component-compiler-utils/download/@vue/component-compiler-utils-2.6.0.tgz#aa46d2a6f7647440b0b8932434d22f12371e543b"
+  integrity sha1-qkbSpvdkdECwuJMkNNIvEjceVDs=
   dependencies:
     consolidate "^0.15.1"
     hash-sum "^1.0.2"
@@ -1215,12 +1223,13 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "http://registry.npm.taobao.org/atob/download/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-autoprefixer@^9.4.7:
-  version "9.4.9"
-  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-9.4.9.tgz#0d3eb86bc1d1228551abcf55220d6fd246b6cb31"
+autoprefixer@^9.4.8:
+  version "9.5.0"
+  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-9.5.0.tgz#7e51d0355c11596e6cf9a0afc9a44e86d1596c70"
+  integrity sha1-flHQNVwRWW5s+aCvyaROhtFZbHA=
   dependencies:
     browserslist "^4.4.2"
-    caniuse-lite "^1.0.30000939"
+    caniuse-lite "^1.0.30000947"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.14"
@@ -1644,6 +1653,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000884:
 caniuse-lite@^1.0.30000939:
   version "1.0.30000939"
   resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000939.tgz#b9ab7ac9e861bf78840b80c5dfbc471a5cd7e679"
+
+caniuse-lite@^1.0.30000947:
+  version "1.0.30000953"
+  resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000953.tgz#8054c4e5c4aa69dc3269353a4a5e102909759dbb"
+  integrity sha1-gFTE5cSqadwyaTU6Sl4QKQl1nbs=
 
 case-sensitive-paths-webpack-plugin@^2.2.0:
   version "2.2.0"
@@ -2572,6 +2586,11 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv-expand@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.taobao.org/dotenv-expand/download/dotenv-expand-4.2.0.tgz#def1f1ca5d6059d24a766e587942c21106ce1275"
+  integrity sha1-3vHxyl1gWdJKdm5YeULCEQbOEnU=
+
 dotenv@^6.2.0:
   version "6.2.0"
   resolved "http://registry.npm.taobao.org/dotenv/download/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
@@ -2600,11 +2619,12 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-echarts@^4.1.0:
-  version "4.1.0"
-  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.1.0.tgz#d588c95f73c1a9928b9c73d5b769751c3185bcdc"
+echarts@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  integrity sha1-mo6jsDNU+G+CTZdiXDNM8Wll7wM=
   dependencies:
-    zrender "4.0.4"
+    zrender "4.0.7"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -2622,9 +2642,10 @@ electron-to-chromium@^1.3.62:
   version "1.3.67"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.67.tgz#5e8f3ffac89b4b0402c7e1a565be06f3a109abbc"
 
-element-ui@^2.5.4:
-  version "2.5.4"
-  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.5.4.tgz#1e051032026a144bc18f7920f0be927977541cb8"
+element-ui@^2.6.3:
+  version "2.6.3"
+  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.3.tgz#e5c87ca3cdc988586320c826872720a8cdc7db44"
+  integrity sha1-5ch8o83JiFhjIMgmhycgqM3H20Q=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -4381,7 +4402,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "http://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@~4.17.10:
   version "4.17.11"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -5059,7 +5080,7 @@ optionator@^0.8.2:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
-ora@^3.0.0, ora@^3.1.0:
+ora@^3.1.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/ora/download/ora-3.1.0.tgz#dbedd8c03b5d017fb67083e87ee52f5ec89823ed"
   dependencies:
@@ -5939,6 +5960,11 @@ psl@^1.1.24:
   version "1.1.29"
   resolved "http://registry.npm.taobao.org/psl/download/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
 
+psl@^1.1.28:
+  version "1.1.31"
+  resolved "http://registry.npm.taobao.org/psl/download/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
+  integrity sha1-6aqG0BAbWxBcvpOsa3hM1UcnYYQ=
+
 public-encrypt@^4.0.0:
   version "4.0.2"
   resolved "http://registry.npm.taobao.org/public-encrypt/download/public-encrypt-4.0.2.tgz#46eb9107206bf73489f8b85b69d91334c6610994"
@@ -5975,7 +6001,7 @@ punycode@1.3.2:
   version "1.3.2"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-punycode@2.x.x, punycode@^2.1.0:
+punycode@2.x.x, punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
@@ -6257,19 +6283,21 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request-promise-core@1.1.1:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/request-promise-core/download/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
+request-promise-core@1.1.2:
+  version "1.1.2"
+  resolved "http://registry.npm.taobao.org/request-promise-core/download/request-promise-core-1.1.2.tgz#339f6aababcafdb31c799ff158700336301d3346"
+  integrity sha1-M59qq6vK/bMceZ/xWHADNjAdM0Y=
   dependencies:
-    lodash "^4.13.1"
+    lodash "^4.17.11"
 
-request-promise-native@^1.0.5:
-  version "1.0.5"
-  resolved "http://registry.npm.taobao.org/request-promise-native/download/request-promise-native-1.0.5.tgz#5281770f68e0c9719e5163fd3fab482215f4fda5"
+request-promise-native@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/request-promise-native/download/request-promise-native-1.0.7.tgz#a49868a624bdea5069f1251d0a836e0d89aa2c59"
+  integrity sha1-pJhopiS96lBp8SUdCoNuDYmqLFk=
   dependencies:
-    request-promise-core "1.1.1"
-    stealthy-require "^1.1.0"
-    tough-cookie ">=2.3.3"
+    request-promise-core "1.1.2"
+    stealthy-require "^1.1.1"
+    tough-cookie "^2.3.3"
 
 request@^2.87.0, request@^2.88.0:
   version "2.88.0"
@@ -6825,9 +6853,10 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stealthy-require@^1.1.0:
+stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/stealthy-require/download/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+  integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
 stream-browserify@^2.0.1:
   version "2.0.1"
@@ -7140,7 +7169,15 @@ toposort@^1.0.0:
   version "1.0.7"
   resolved "http://registry.npm.taobao.org/toposort/download/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
 
-tough-cookie@>=2.3.3, tough-cookie@~2.4.3:
+tough-cookie@^2.3.3:
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
+  integrity sha1-zZ+yoKodWhK0c72fuW+j3P9lreI=
+  dependencies:
+    psl "^1.1.28"
+    punycode "^2.1.1"
+
+tough-cookie@~2.4.3:
   version "2.4.3"
   resolved "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
   dependencies:
@@ -7407,9 +7444,10 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.0"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
 
-vue-loader@^15.6.2:
-  version "15.6.4"
-  resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-15.6.4.tgz#ea6ea48cada424da2cc2304495377678e4b0f6a7"
+vue-loader@^15.6.4:
+  version "15.7.0"
+  resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-15.7.0.tgz#27275aa5a3ef4958c5379c006dd1436ad04b25b3"
+  integrity sha1-JydapaPvSVjFN5wAbdFDatBLJbM=
   dependencies:
     "@vue/component-compiler-utils" "^2.5.1"
     hash-sum "^1.0.2"
@@ -7428,9 +7466,10 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.6.6:
-  version "2.6.6"
-  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.6.6.tgz#a807acbf3d51971d3721d75ecb1b927b517c1a02"
+vue-template-compiler@^2.6.10:
+  version "2.6.10"
+  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
+  integrity sha1-MjtPNJXwT6o1AzN6gvXWUHeZycw=
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -7439,9 +7478,10 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
 
-vue@^2.6.6:
-  version "2.6.6"
-  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.6.tgz#dde41e483c11c46a7bf523909f4f2f816ab60d25"
+vue@^2.6.10:
+  version "2.6.10"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
 vuex@^3.1.0:
   version "3.1.0"
@@ -7504,9 +7544,10 @@ webpack-dev-middleware@^3.5.1:
     range-parser "^1.0.3"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.1.14:
+webpack-dev-server@^3.2.0:
   version "3.2.1"
   resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-3.2.1.tgz#1b45ce3ecfc55b6ebe5e36dab2777c02bc508c4e"
+  integrity sha1-G0XOPs/FW26+Xjbasnd8ArxQjE4=
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
@@ -7739,6 +7780,7 @@ yorkie@^2.0.0:
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
 
-zrender@4.0.4:
-  version "4.0.4"
-  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.4.tgz#910e60d888f00c9599073f23758dd23345fe48fd"
+zrender@4.0.7:
+  version "4.0.7"
+  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  integrity sha1-Fa6WCCL17+1BCZXTflEH/j3hDm0=

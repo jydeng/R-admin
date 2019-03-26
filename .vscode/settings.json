@@ -10,7 +10,7 @@
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
   "workbench.enableExperiments": false,
-  "workbench.colorTheme": "Quiet Light",
+  "workbench.colorTheme": "One Dark Pro Bold",
   "vetur.format.defaultFormatter.html": "prettyhtml",
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.postcss": "prettier",

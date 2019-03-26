@@ -1,31 +1,29 @@
 <template>
-  <el-row class="breadcrumb">
+  <div class="breadcrumb">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item
         v-for="(link, index) in links"
-        :key="index"
         :to="{ path: link.url }"
+        :key="index"
       >
-        <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i>
-        {{ link.name }}
+        <span>
+          <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i>
+          {{ link.name }}
+        </span>
       </el-breadcrumb-item>
     </el-breadcrumb>
-    <el-button
-      type="text"
-      class="closePage"
-      title="关闭页面"
-      @click="closePage"
-    >
+
+    <el-button type="text" class="close" title="关闭页面" @click="close">
       <i class="fa fa-remove"></i>
     </el-button>
-  </el-row>
+  </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "Rbreadcrumb",
+  name: "iBreadcrumb",
   props: {
-    // 附加内容
+    // 附加项 [{name:xxx,icon:xxx}]
     append: {
       type: Array,
       default: function() {
@@ -55,7 +53,7 @@ export default {
     }
   },
   methods: {
-    closePage() {
+    close() {
       this.$router.push("/");
     }
   }
@@ -71,7 +69,7 @@ export default {
     line-height: 30px;
   }
 
-  .closePage {
+  .close {
     position: absolute;
     right: 5px;
     top: 0;

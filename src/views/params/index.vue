@@ -1,13 +1,13 @@
 <template>
-  <el-row>
-    <Rbreadcrumb></Rbreadcrumb>
+  <div>
+    <i-breadcrumb></i-breadcrumb>
     <el-row class="searchPart" :gutter="10">
       <el-col :md="6" :sm="24">
-        <Rparams
+        <i-params
           v-model="test"
           placeholder="请输入监控链地址"
           :position="true"
-        ></Rparams>
+        ></i-params>
       </el-col>
       <el-col :md="6" :sm="24">
         <el-button type="primary" plain @click="dialogVisible = true"
@@ -16,9 +16,9 @@
       </el-col>
     </el-row>
     <el-dialog title="在弹窗中使用" :visible.sync="dialogVisible">
-      <Rparams v-model="test" placeholder="请输入监控链地址"></Rparams>
+      <i-params v-model="test" placeholder="请输入监控链地址"></i-params>
     </el-dialog>
-  </el-row>
+  </div>
 </template>
 <script>
 export default {

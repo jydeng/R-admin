@@ -1,14 +1,18 @@
 <template>
-  <el-row>
-    <Rbreadcrumb></Rbreadcrumb>
+  <div>
+    <i-breadcrumb></i-breadcrumb>
     <el-row class="searchPart" :gutter="10">
       <el-col :md="6" :sm="24">
-        <el-button type="primary" plain @click="handleWrite">写入</el-button>
-        <el-button type="primary" plain @click="handleRead">读取</el-button>
+        <el-button type="primary" plain @click="handleWrite"
+          >尝试写入编辑器</el-button
+        >
+        <el-button type="primary" plain @click="handleRead"
+          >尝试读取编辑器</el-button
+        >
       </el-col>
     </el-row>
     <div ref="editor"></div>
-  </el-row>
+  </div>
 </template>
 <script>
 import E from "wangeditor";
