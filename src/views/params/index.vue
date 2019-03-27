@@ -3,11 +3,7 @@
     <i-breadcrumb></i-breadcrumb>
     <el-row class="searchPart" :gutter="10">
       <el-col :md="6" :sm="24">
-        <i-params
-          v-model="test"
-          placeholder="请输入监控链地址"
-          :position="true"
-        ></i-params>
+        <i-params v-model="test" placeholder="请输入监控链地址"></i-params>
       </el-col>
       <el-col :md="6" :sm="24">
         <el-button type="primary" plain @click="dialogVisible = true"
