@@ -12,6 +12,7 @@ import router from "./router";
 import store from "./store";
 
 import element from "element-ui";
+import elementParamsInput from "element-params-input";
 
 import components from "./components";
 import http from "./http";
@@ -24,6 +25,8 @@ Vue.config.productionTip = false;
 
 // 引用elementUI
 Vue.use(element, { size: "small" });
+// 引用paramsInput
+Vue.use(elementParamsInput);
 
 // 引用自定义组件
 Vue.use(components);

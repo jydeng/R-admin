@@ -2642,6 +2642,13 @@ electron-to-chromium@^1.3.62:
   version "1.3.67"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.67.tgz#5e8f3ffac89b4b0402c7e1a565be06f3a109abbc"
 
+element-params-input@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/element-params-input/-/element-params-input-1.1.1.tgz#06475499a68ee5f08b9b9540b734314a2f889352"
+  integrity sha512-vku7JomDuWkFUStlNbi+yrb+NKdWIJ9OIhl4SvxB5ajVCCkSX0HqFobije8fgO7dHMAtPjwqeuHj268WS9zg+g==
+  dependencies:
+    vue "^2.6.10"
+
 element-ui@^2.6.3:
   version "2.6.3"
   resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.3.tgz#e5c87ca3cdc988586320c826872720a8cdc7db44"
