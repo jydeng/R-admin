@@ -7,6 +7,7 @@
       :on-success="success"
       :before-upload="before"
       :show-file-list="false"
+      :headers="headers"
     >
       <img v-show="value" :src="value" class="uploader-img" />
       <i v-show="!value" class="fa fa-fw fa-cloud-upload uploader-icon"
@@ -55,6 +56,12 @@ export default {
       type: Array,
       default: () => {
         return [];
+      }
+    },
+    headers: {
+      type: Object,
+      default: () => {
+        return {};
       }
     },
     // 提示文本

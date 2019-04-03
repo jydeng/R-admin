@@ -34,7 +34,7 @@
         :total="total"
         :page-size="pageSize"
         :current-page="page"
-        @current-change="truningPage"
+        @current-change="turningPage"
       ></el-pagination>
     </div>
   </div>
@@ -98,8 +98,8 @@ export default {
   },
   methods: {
     // 翻页
-    truningPage(currentPage) {
-      this.$emit("truningPage", { page: currentPage, pageSize: this.pageSize });
+    turningPage(currentPage) {
+      this.$emit("turningPage", { page: currentPage, pageSize: this.pageSize });
     },
     // checkbox 选中触发
     selection(selection) {

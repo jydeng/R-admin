@@ -17,7 +17,7 @@ Axios.interceptors.request.use(
     if (config.method === "post") {
       config.data = qs.stringify(config.data);
     }
-    config.headers["Authorization"] = store.state.token;
+    config.headers["Authorization"] = store.state.common.token;
     return config;
   },
   error => {

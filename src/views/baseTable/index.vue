@@ -34,7 +34,7 @@
         :total="totalSize"
         :height="700"
         :isLoading="loading"
-        @truningPage="truningPage"
+        @turningPage="turningPage"
       >
         <el-table-column slot="operationBtn" label="slot模式定义复杂列">
           <template slot-scope="{ row }">
@@ -88,7 +88,7 @@ export default {
       ];
       this.totalSize = 3;
     },
-    truningPage(page) {
+    turningPage(page) {
       this.page = page;
       this.handleSearch();
     },

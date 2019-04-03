@@ -56,7 +56,7 @@
         :total="totalSize"
         :isLoading="loading"
         :height="270"
-        @truningPage="handleChangePage"
+        @turningPage="handleChangePage"
       ></i-table>
     </el-row>
   </div>
