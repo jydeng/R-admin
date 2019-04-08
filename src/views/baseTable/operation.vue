@@ -14,11 +14,14 @@
   </el-table-column>
 </template>
 <script>
+import Emitter from "@/mixins/emitter";
 export default {
   props: ["column"],
+  mixins: [Emitter],
   methods: {
     click(row) {
       console.log(row);
+      this.dispatch("baseTable", "msg", "hello");
     }
   }
 };

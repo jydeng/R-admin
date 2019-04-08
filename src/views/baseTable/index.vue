@@ -55,8 +55,10 @@
 </template>
 <script>
 import operation from "./operation";
+import Emitter from "@/mixins/emitter";
 export default {
   name: "baseTable",
+  mixins: [Emitter],
   data() {
     return {
       selectedDate: ["", ""],
@@ -94,7 +96,13 @@ export default {
     },
     click(row) {
       console.log(row);
+    },
+    msg(m) {
+      console.log(m);
     }
+  },
+  created() {
+    this.$on("msg", this.msg);
   },
   activated() {
     this.search();
