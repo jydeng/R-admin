@@ -63,8 +63,9 @@
 </template>
 
 <script>
+import echarts from "echarts";
 import { mapGetters } from "vuex";
-import { gChartOp, echarts } from "./chart";
+import { gChartOp } from "./chart";
 
 export default {
   name: "dashboard",
@@ -73,7 +74,7 @@ export default {
       activeChanel: "all",
       selectedDate: ["", ""],
       pickerOptions: {
-        shortcuts: this.$storage.dateShortcuts
+        shortcuts: this.$element.dateShortcuts
       },
       page: 1,
       columns: [
@@ -125,7 +126,7 @@ export default {
     handleChangePage() {},
     // 绘制图表
     handleDrawChart(data) {
-      const chartOp = gChartOp(data);
+      const chartOp = gChartOp(data, echarts);
       if (this.chart === null) {
         this.chart = echarts.init(document.getElementById("chart"));
         window.addEventListener("resize", this.chart.resize);

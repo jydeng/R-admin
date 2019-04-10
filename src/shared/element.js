@@ -65,4 +65,9 @@ const gLengthValidator = function(length, message) {
   };
 };
 
-export default { dateShortcuts, gLengthValidator };
+// 上限为当前时间
+function now(date) {
+  return date.getTime() > new Date().getTime();
+}
+
+export default { dateShortcuts, gLengthValidator, now };

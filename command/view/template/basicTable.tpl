@@ -1,4 +1,4 @@
-<template>
+`<template>
   <div>
     <i-breadcrumb></i-breadcrumb>
     <i-searchPart>
@@ -54,9 +54,8 @@
   </div>
 </template>
 <script>
-import operation from "./operation";
 export default {
-  name: "baseTable",
+  name: "${name}",
   data() {
     return {
       selectedDate: ["", ""],
@@ -69,7 +68,6 @@ export default {
       columns: [
         { label: "ID", prop: "id" },
         { label: "产品名", prop: "product_name" },
-        { label: "component模式定义复杂列", component: operation },
         { slot: "operationBtn" }
       ],
       tableData: [],
@@ -104,4 +102,4 @@ export default {
     this.search();
   }
 };
-</script>
+</script>`

@@ -1,6 +1,6 @@
 const states = {
   user: { username: "", role: "" },
-  themeColor: "#27B6AF",
+  themeColor: "#409EFF",
   menu: [],
   token: "",
   isCollapse: true
