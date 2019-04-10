@@ -14,7 +14,7 @@
 - 基于 token 认证的权限系统
 - axios、jsonp 封装
 - cookie、sessionStorage 封装
-- FontAwesome、iconFont
+- FontAwesome
 - 富文本编辑器
 - 自定义主题色
 - Echarts 图表
@@ -23,7 +23,7 @@
 
 ## 使用
 
-- 初始化
+- 初始化：安装依赖
 
 ```shell
 git clone  git@github.com:jydeng/vue-admin.git
@@ -31,18 +31,24 @@ cd vue-admin
 yarn
 ```
 
-- 开发调试
+- 开发调试：调试功能代码
 
 ```shell
 yarn serve
 ```
 
-- 打包上线
+- 打包上线：生成优化浏览器可用的代码、资源文件
 
 ```shell
 yarn lint
 yarn build
 ```
+
+- 视图生成：选择文件夹、模板自动生成通用视图代码，快速完成功能开发
+```shell
+yarn new:view
+```
+
 
 ## VSCode 插件&配置
 
