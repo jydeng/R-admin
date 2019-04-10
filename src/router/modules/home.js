@@ -32,6 +32,12 @@ export default [
         name: "params",
         component: () => import("@/views/params"),
         meta: { index: 5, auth: true }
+      },
+      {
+        path: "/clipboard",
+        name: "clipboard",
+        component: () => import("@/views/clipboard"),
+        meta: { index: 6, auth: true }
       }
     ],
     beforeEnter(to, from, next) {

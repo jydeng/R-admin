@@ -1,7 +1,7 @@
 <template>
   <el-aside :style="{ width: asideWidth }">
     <div class="profile" v-show="!isCollapse">
-      <img src="@/assets/profile.png" alt="profile" />
+      <img src="@/assets/profile.png" alt="profile">
     </div>
     <el-menu
       :router="true"
@@ -40,27 +40,28 @@ export default {
       this.setmenu([
         {
           icon: "fa fa-tachometer",
-          id: "1",
           name: "首页",
           url: "/dashboard"
         },
         {
           icon: "fa fa-table",
-          id: "2",
           name: "数据表格",
           url: "/baseTable"
         },
         {
           icon: "fa fa-pencil",
-          id: "3",
           name: "富文本编辑器",
           url: "/editor"
         },
         {
           icon: "fa fa-html5",
-          id: "4",
           name: "参数输入框",
           url: "/params"
+        },
+        {
+          icon: "fa fa-clone",
+          name: "操纵剪贴板",
+          url: "/clipboard"
         }
       ]);
     }

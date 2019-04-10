@@ -9,6 +9,7 @@
     "new:view": "node ./command/view"
   },
   "dependencies": {
+    "clipboard": "^2.0.4",
     "element-params-input": "^1.2.1",
     "js-cookie": "^2.2.0",
     "jsonp": "^0.2.1"

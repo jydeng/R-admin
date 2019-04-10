@@ -3,12 +3,8 @@
     <i-breadcrumb></i-breadcrumb>
     <el-row class="searchPart" :gutter="10">
       <el-col :md="6" :sm="24">
-        <el-button type="primary" plain @click="handleWrite"
-          >尝试写入编辑器</el-button
-        >
-        <el-button type="primary" plain @click="handleRead"
-          >尝试读取编辑器</el-button
-        >
+        <el-button type="primary" plain @click="handleWrite">尝试写入编辑器</el-button>
+        <el-button type="primary" plain @click="handleRead">尝试读取编辑器</el-button>
       </el-col>
     </el-row>
     <div ref="editor"></div>
@@ -40,7 +36,7 @@ export default {
       );
     },
     handleRead() {
-      alert(this.content);
+      this.$message(`编辑器内容：${this.content}`);
     }
   },
   activated() {
