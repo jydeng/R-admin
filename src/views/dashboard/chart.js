@@ -1,16 +1,5 @@
-// 按需引入 echarts
-const e = require("echarts/lib/echarts");
-// 引入折线图
-require("echarts/lib/chart/line");
-// 引入渐变填充
-require("echarts/lib/component/graphic");
-// 引入图例
-require("echarts/lib/component/legend");
-// 引入提示
-require("echarts/lib/component/tooltip");
-
 // 生成echart配置
-export function gChartOp(data) {
+export function gChartOp(data, echarts) {
   // 生成渐变填充
   const gAreaStyle = (color1, color2) => {
     const areaStyle = {
@@ -84,6 +73,3 @@ export function gChartOp(data) {
 
   return chartOp;
 }
-
-// 导出echarts
-export const echarts = e;

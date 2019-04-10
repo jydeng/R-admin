@@ -5,29 +5,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "new:view": "node ./command/view"
   },
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "axios": "^0.18.0",
-    "echarts": "^4.2.1",
-    "element-params-input": "^1.1.1",
-    "element-ui": "^2.6.3",
-    "font-awesome": "^4.7.0",
+    "element-params-input": "^1.2.1",
     "js-cookie": "^2.2.0",
-    "jsonp": "^0.2.1",
-    "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.1.0",
-    "wangeditor": "^3.1.1"
+    "jsonp": "^0.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.1",
     "@vue/cli-plugin-eslint": "^3.5.1",
     "@vue/cli-service": "^3.5.1",
     "@vue/eslint-config-prettier": "^4.0.1",
+    "chalk": "^2.4.2",
     "cross-env": "^5.2.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",

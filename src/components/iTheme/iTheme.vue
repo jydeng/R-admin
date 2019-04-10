@@ -8,11 +8,10 @@
 
 <script>
 // 获取版本号, 用于下载CSS
-const version = require("element-ui/package.json").version;
+// const version = require("element-ui/package.json").version;
+const version = "2.7.0";
 // 原始蓝色, 用作替换
 const original = "#409EFF";
-// 当前CSS配置颜色
-const current = "#27B6AF";
 
 export default {
   name: "iTheme",
@@ -23,7 +22,7 @@ export default {
     return {
       chalk: "", // 存放下载的CSS
       theme: this.themeColor, // 模板绑定颜色
-      predefine: [current, original, "#9900CC", "#FF0033"] //备选颜色
+      predefine: [original, "#27B6AF", "#9900CC", "#FF0033"] //备选颜色
     };
   },
   watch: {
@@ -161,7 +160,7 @@ export default {
     }
   },
   mounted() {
-    if (this.themeColor !== current) {
+    if (this.themeColor !== original) {
       this.changeThemeColor(this.themeColor);
     }
   }
