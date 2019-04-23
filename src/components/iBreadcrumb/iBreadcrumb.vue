@@ -35,7 +35,7 @@ export default {
     ...mapGetters("common", ["menu"]),
     links() {
       // 正则
-      const reg = new RegExp("(/[a-zA-Z]*)?(/[a-zA-Z]*)?");
+      const reg = new RegExp("(/[a-zA-Z0-9]*)?(/[a-zA-Z0-9]*)?");
       // 分组匹配结果
       const matchResult = reg.exec(this.$route.path);
       // 第一层
