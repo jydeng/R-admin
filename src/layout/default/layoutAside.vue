@@ -1,7 +1,7 @@
 <template>
   <el-aside :style="{ width: asideWidth }">
     <div class="profile" v-show="!isCollapse">
-      <img src="@/assets/profile.png" alt="profile">
+      <img src="@/assets/profile.png" alt="profile" />
     </div>
     <el-menu
       :router="true"
@@ -10,10 +10,25 @@
       :default-active="activeMenu"
       :collapse="isCollapse"
     >
-      <el-menu-item v-for="m in menu" :index="m.url" :key="m.id">
-        <i :class="m.icon"></i>&nbsp;
-        <span slot="title">{{ m.name }}</span>
-      </el-menu-item>
+      <template v-for="m in menu">
+        <el-submenu v-if="m.child" :key="m.id" :index="m.id">
+          <template slot="title">
+            <i :class="m.icon"></i>
+            &nbsp;
+            <span>{{ m.name }}</span>
+          </template>
+          <el-menu-item-group :title="`---${m.name}---`">
+            <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">{{
+              c.name
+            }}</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+
+        <el-menu-item v-else :key="m.id" :index="m.url">
+          <i :class="m.icon"></i>&nbsp;
+          <span slot="title">{{ m.name }}</span>
+        </el-menu-item>
+      </template>
     </el-menu>
   </el-aside>
 </template>
@@ -24,44 +39,78 @@ export default {
   data() {
     return {
       asideBgColor: "#1D212A",
-      asideTxtColor: "#B3B8C3"
+      asideTxtColor: "#B3B8C3",
+      activeMenu: ""
     };
   },
   computed: {
-    ...mapGetters("common", ["asideWidth", "isCollapse", "menu"]),
-    activeMenu() {
-      return /(\/[a-zA-Z]*)/.exec(this.$route.path).pop();
+    ...mapGetters("common", ["isCollapse"]),
+    ...mapGetters("user", ["menu"]),
+    asideWidth() {
+      return this.isCollapse ? "55px" : "210px";
+    }
+  },
+  watch: {
+    "$route.path": {
+      handler: function() {
+        this.activeMenu = /(\/[a-zA-Z0-9]*)*/.exec(this.$route.path).shift();
+      },
+      immediate: true
     }
   },
   methods: {
-    ...mapActions("common", ["setmenu"]),
+    ...mapActions("user", ["setmenu"]),
     // 请求菜单
     getMenu() {
       this.setmenu([
         {
-          icon: "fa fa-tachometer",
-          name: "首页",
-          url: "/dashboard"
+          id: "1",
+          icon: "fa fa-home",
+          name: "Demo",
+          child: [
+            {
+              id: "1-1",
+              icon: "fa fa-tachometer",
+              name: "首页",
+              url: "/home"
+            },
+            {
+              id: "1-2",
+              icon: "fa fa-table",
+              name: "数据表格",
+              url: "/home/baseTable"
+            },
+            {
+              id: "1-3",
+              icon: "fa fa-pencil",
+              name: "富文本编辑器",
+              url: "/home/editor"
+            },
+            {
+              id: "1-4",
+              icon: "fa fa-html5",
+              name: "参数输入框",
+              url: "/home/params"
+            },
+            {
+              id: "1-5",
+              icon: "fa fa-clone",
+              name: "操纵剪贴板",
+              url: "/home/clipboard"
+            }
+          ]
         },
         {
-          icon: "fa fa-table",
-          name: "数据表格",
-          url: "/baseTable"
-        },
-        {
-          icon: "fa fa-pencil",
-          name: "富文本编辑器",
-          url: "/editor"
-        },
-        {
-          icon: "fa fa-html5",
-          name: "参数输入框",
-          url: "/params"
-        },
-        {
-          icon: "fa fa-clone",
-          name: "操纵剪贴板",
-          url: "/clipboard"
+          id: "2",
+          icon: "fa fa-unlink",
+          name: "错误页",
+          child: [
+            {
+              id: "2-1",
+              name: "404",
+              url: "/page404"
+            }
+          ]
         }
       ]);
     }
@@ -96,18 +145,13 @@ export default {
 
   // 菜单
   .el-menu {
-    height: calc(100% - 140px);
+    height: calc(100% - 165px);
     width: 100%;
   }
 
   // 展开状态
   .el-menu:not(.el-menu--collapse) {
     width: 210px;
-  }
-
-  // 加粗显示当前的项目
-  .is-active {
-    font-weight: 600;
   }
 }
 </style>

@@ -12,17 +12,30 @@
         </span>
       </el-breadcrumb-item>
     </el-breadcrumb>
-
-    <el-button type="text" class="close" title="关闭页面" @click="close">
-      <i class="fa fa-remove"></i>
-    </el-button>
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+function flatMenu(menu) {
+  let flat = [];
+  menu.forEach(m => {
+    if (m.child) {
+      flat = flat.concat(m.child);
+    } else {
+      flat = flat.concat(m);
+    }
+  });
+  return flat;
+}
 export default {
   name: "iBreadcrumb",
   props: {
+    // 所有的菜单项
+    menu: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    },
     // 附加项 [{name:xxx,icon:xxx}]
     append: {
       type: Array,
@@ -31,30 +44,32 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters("common", ["menu"]),
-    links() {
-      // 正则
-      const reg = new RegExp("(/[a-zA-Z0-9]*)?(/[a-zA-Z0-9]*)?");
-      // 分组匹配结果
-      const matchResult = reg.exec(this.$route.path);
-      // 第一层
-      const first = matchResult[1];
-      // 初始化，从menu中搜索菜单名与图表
-      let result = [];
-      if (this.menu.length) {
-        // 查找第一层菜单名与图表
-        result.push(this.menu.find(item => item.url === first));
-      }
-      // 拼接附加内容
-      result = result.concat(this.append);
-
-      return result;
-    }
+  data() {
+    return {
+      links: []
+    };
   },
-  methods: {
-    close() {
-      this.$router.push("/");
+  watch: {
+    "$route.path": {
+      handler: function(v) {
+        // 正则
+        const reg = new RegExp("(/[a-zA-Z0-9]*)?(/[a-zA-Z0-9]*)?");
+        // 分组匹配结果
+        const matchResult = reg.exec(v);
+        // 第一层
+        const first = matchResult[0];
+        // 初始化，从menu中搜索菜单名与图表
+        let result = [];
+        if (this.menu.length) {
+          let flat = flatMenu(this.menu);
+          // 查找第一层菜单名与图表
+          result.push(flat.find(item => item.url === first));
+        }
+        // 拼接附加内容
+        result = result.concat(this.append);
+        this.links = result;
+      },
+      immediate: true
     }
   }
 };
@@ -67,16 +82,6 @@ export default {
     font-size: 13px;
     height: 30px;
     line-height: 30px;
-  }
-
-  .close {
-    position: absolute;
-    right: 5px;
-    top: 0;
-
-    :hover {
-      color: red;
-    }
   }
 }
 </style>

@@ -34,14 +34,14 @@ export default {
   data() {
     return {
       user: {
-        username: "admin",
-        password: "admin"
+        username: "jydeng",
+        password: "123456"
       },
       redirect: this.$route.query["redirect"]
     };
   },
   methods: {
-    ...mapActions("common", ["login"]),
+    ...mapActions("user", ["login"]),
     handleLogin() {
       if (this.user.username.trim().length === 0) {
         this.$notify({
@@ -60,12 +60,10 @@ export default {
       }
 
       this.login({
-        user: { username: this.user.username, role: "1" },
-        token: "123456"
+        user: { username: this.user.username, role: "admin" },
+        token: "admin",
+        redirect: this.redirect || "/"
       });
-
-      this.$storage.write("state", this.$store.state);
-      this.$router.push(this.redirect || "/dashboard");
     }
   }
 };
@@ -84,7 +82,6 @@ export default {
     background-position: center center;
     background-size: 80px;
     background-repeat: no-repeat;
-    border-right: dotted 1px #ddd;
   }
 
   .right {
@@ -93,9 +90,9 @@ export default {
 
     .user {
       width: 100%;
-      @include center;
       box-sizing: border-box;
       padding: 0 10px;
+      @include center;
 
       .el-input {
         line-height: 55px;

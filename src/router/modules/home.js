@@ -1,48 +1,44 @@
 import store from "@/store";
 export default [
   {
-    path: "/",
+    path: "/home",
     component: () => import("@/pages/home"),
     children: [
       {
         path: "/",
-        redirect: "/dashboard",
-        meta: { index: 1, auth: true }
-      },
-      {
-        path: "/dashboard",
         name: "dashboard",
         component: () => import("@/views/dashboard"),
-        meta: { index: 2, auth: true }
+        meta: { index: 1, requiresAuth: true }
       },
       {
-        path: "/baseTable",
+        path: "baseTable",
         name: "baseTable",
         component: () => import("@/views/baseTable"),
-        meta: { index: 3, auth: true }
+        meta: { index: 2, requiresAuth: true }
       },
       {
-        path: "/editor",
+        path: "editor",
         name: "editor",
         component: () => import("@/views/editor"),
-        meta: { index: 4, auth: true }
+        meta: { index: 3, requiresAuth: true }
       },
       {
-        path: "/params",
+        path: "params",
         name: "params",
         component: () => import("@/views/params"),
-        meta: { index: 5, auth: true }
+        meta: { index: 4, requiresAuth: true }
       },
       {
-        path: "/clipboard",
+        path: "clipboard",
         name: "clipboard",
         component: () => import("@/views/clipboard"),
-        meta: { index: 6, auth: true }
+        meta: { index: 5, requiresAuth: true }
       }
     ],
     beforeEnter(to, from, next) {
-      if (to.meta.auth) {
-        if (store.state.common.token) {
+      // 是否登录校验
+      if (to.meta.requiresAuth) {
+        if (store.state.user.token) {
           next();
         } else {
           next({

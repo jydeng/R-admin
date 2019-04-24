@@ -1,14 +1,18 @@
 <template>
   <div class="layoutHeader">
     <a class="logo"></a>
-    <a class="toggle" @click="asideToggle">
+    <a class="toggle" @click="asideCollapse">
       <i class="fa fa-th-list"></i>
     </a>
-    <i-theme :themeColor="themeColor" @changeThemeColor="changeColor"></i-theme>
+    <i-theme
+      :themeColor="themeColor"
+      @changeThemeColor="changeThemeColor"
+    ></i-theme>
+    <i-breadcrumb :menu="menu"></i-breadcrumb>
     <a class="space"></a>
     <el-dropdown class="userinfo" trigger="click" @command="userDropdown">
       <span>
-        <img src="@/assets/profile.png" alt="profile" />&nbsp;
+        <img src="@/assets/profile.png" alt="profile" />
         {{ user.username }}
         <i class="fa fa-sort-down"></i>
       </span>
@@ -28,29 +32,18 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "layoutHeader",
   computed: {
-    ...mapGetters("common", ["user", "themeColor"])
+    ...mapGetters("common", ["themeColor"]),
+    ...mapGetters("user", ["user", "menu"])
   },
   methods: {
-    ...mapActions("common", ["logout", "asideCollapse", "changeThemeColor"]),
-    asideToggle() {
-      this.asideCollapse();
-    },
+    ...mapActions("common", ["asideCollapse", "changeThemeColor"]),
+    ...mapActions("user", ["logout"]),
     userDropdown(command) {
       switch (command) {
         case "logout":
-          this.$notify({
-            message: "注销成功",
-            type: "success"
-          });
-
           this.logout();
-          this.$storage.remove("state");
-          this.$router.push("/login");
           break;
       }
-    },
-    changeColor({ themeColor }) {
-      this.changeThemeColor(themeColor);
     }
   }
 };

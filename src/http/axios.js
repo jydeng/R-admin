@@ -2,12 +2,11 @@ import axios from "axios";
 import qs from "qs";
 import { Notification } from "element-ui";
 import store from "@/store";
-import router from "@/router";
 
 // axios实例
 const Axios = axios.create({
-  baseURL: process.env.NODE_ENV === "production" ? "/" : "/api",
-  timeout: 5000,
+  baseURL: "/api",
+  timeout: 60000,
   responseType: "json"
 });
 
@@ -17,7 +16,7 @@ Axios.interceptors.request.use(
     if (config.method === "post") {
       config.data = qs.stringify(config.data);
     }
-    config.headers["Authorization"] = store.state.common.token;
+    config.headers["Authorization"] = store.state.user.token;
     return config;
   },
   error => {
@@ -57,14 +56,14 @@ Axios.interceptors.response.use(
   error => {
     switch (error.response.status) {
       case 400:
+      case 401:
         Notification({
-          message: "登录超时，请重新登录",
+          message: "登录超时，需要重新登录",
           type: "warning",
           duration: 2000
         });
 
-        store.dispatch("logout");
-        router.push("/login");
+        store.dispatch("user/logout");
         return Promise.reject(error.message);
       default:
         Notification({

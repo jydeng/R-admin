@@ -11,9 +11,7 @@
 export default {
   name: "layoutMain",
   data() {
-    return {
-      transitionName: ""
-    };
+    return { transitionName: "" };
   },
   watch: {
     //使用watch 监听$router的变化
@@ -35,7 +33,7 @@ export default {
 .el-main {
   position: relative;
   margin: 10px;
-  padding: 5px 10px 10px 10px;
+  padding: 5px 10px;
   overflow-x: hidden;
   @include card;
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <i-breadcrumb></i-breadcrumb>
     <i-searchPart>
       <el-col :md="6" :sm="24">
         <el-input v-model="txt"></el-input>
@@ -21,11 +20,10 @@ export default {
       txt: "随便写一点东西吧"
     };
   },
-  methods: {
-  },
+  methods: {},
   activated() {
     this.clipboard = new Clipboard(".cp", {
-      text: trigger => {
+      text: () => {
         this.$notify({
           title: "提示",
           message: "复制成功!",

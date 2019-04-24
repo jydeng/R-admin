@@ -1,6 +1,5 @@
 <template>
   <div>
-    <i-breadcrumb></i-breadcrumb>
     <i-searchPart>
       <el-col :md="6" :sm="24">
         <el-date-picker

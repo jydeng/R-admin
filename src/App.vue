@@ -10,7 +10,7 @@ export default {
   methods: {
     beforeunloadHandler() {
       // F5刷新或者关闭页面前，把vuex存放的数据存放到storage
-      if (store.state.common.token) {
+      if (store.state.user.token) {
         this.$storage.write("state", store.state);
       }
     }
