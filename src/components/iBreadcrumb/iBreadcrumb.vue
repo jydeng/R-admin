@@ -2,9 +2,9 @@
   <div class="breadcrumb">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item
-        v-for="(link, index) in links"
+        v-for="(link, i) in links"
         :to="{ path: link.url }"
-        :key="index"
+        :key="i"
       >
         <span>
           <i :class="link.icon || 'fa fa-fw fa-sticky-note'"></i>
@@ -15,17 +15,6 @@
   </div>
 </template>
 <script>
-function flatMenu(menu) {
-  let flat = [];
-  menu.forEach(m => {
-    if (m.child) {
-      flat = flat.concat(m.child);
-    } else {
-      flat = flat.concat(m);
-    }
-  });
-  return flat;
-}
 export default {
   name: "iBreadcrumb",
   props: {
@@ -49,28 +38,46 @@ export default {
       links: []
     };
   },
-  watch: {
-    "$route.path": {
-      handler: function(v) {
-        // 正则
-        const reg = new RegExp("(/[a-zA-Z0-9]*)?(/[a-zA-Z0-9]*)?");
-        // 分组匹配结果
-        const matchResult = reg.exec(v);
-        // 第一层
-        const first = matchResult[0];
-        // 初始化，从menu中搜索菜单名与图表
-        let result = [];
-        if (this.menu.length) {
-          let flat = flatMenu(this.menu);
-          // 查找第一层菜单名与图表
-          result.push(flat.find(item => item.url === first));
+  computed: {
+    flatMenu() {
+      let flat = [];
+      this.menu.forEach(m => {
+        if (m.child) {
+          flat = flat.concat(m.child);
+        } else {
+          flat = flat.concat(m);
         }
-        // 拼接附加内容
-        result = result.concat(this.append);
-        this.links = result;
+      });
+      return flat;
+    }
+  },
+  methods: {
+    /**
+     * 分析url & 拼接面包屑
+     */
+    analysis(to) {
+      let result = [];
+      if (this.flatMenu.length) {
+        // 查找第一层菜单名与图表
+        result.push(this.flatMenu.find(item => item.url === to.fullPath));
+      }
+      // 拼接附加内容
+      result = result.concat(this.append);
+      this.links = result;
+    }
+  },
+  watch: {
+    $route: {
+      handler: function(to) {
+        this.analysis(to);
       },
       immediate: true
     }
+  },
+  mounted() {
+    this.$nextTick(function() {
+      this.analysis(this.$route);
+    });
   }
 };
 </script>

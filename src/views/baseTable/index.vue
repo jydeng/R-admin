@@ -32,18 +32,30 @@
         :data="tableData"
         :total="totalSize"
         :height="700"
-        :isLoading="loading"
+        :isLoading="tableLoading"
         @turningPage="turningPage"
       >
-        <el-table-column slot="operationBtn" label="slot模式定义复杂列">
+        <el-table-column type="selection" slot="checkbox"></el-table-column>
+        <el-table-column slot="operationBtn" label="复杂列(slot模式)">
+          <template slot="header">
+            <el-tooltip effect="dark" placement="bottom">
+              <div slot="content">
+                element推荐的方式，编写相应的插槽，好处是使用方便，不便的是若列太复杂，代码会很长，而且不好分割
+              </div>
+              <span>
+                复杂列(slot模式)
+                <i class="fa fa-question-circle"></i>
+              </span>
+            </el-tooltip>
+          </template>
           <template slot-scope="{ row }">
             <el-button type="text" @click="click(row)" title="报表">
               <i class="fa fa-fw fa fa-line-chart"></i>
             </el-button>
-            <el-button type="text" title="编辑">
+            <el-button type="text" @click="click(row)" title="编辑">
               <i class="fa fa-fw fa-pencil"></i>
             </el-button>
-            <el-button type="text" title="删除">
+            <el-button type="text" @click="click(row)" title="删除">
               <i class="fa fa-fw fa-times"></i>
             </el-button>
           </template>
@@ -58,7 +70,7 @@ export default {
   name: "baseTable",
   data() {
     return {
-      selectedDate: ["", ""],
+      selectedDate: [this.$util.fewDays(-7), this.$util.fewDays(-1)],
       pickerOptions: {
         shortcuts: this.$element.dateShortcuts,
         disabledDate: this.$element.now
@@ -66,22 +78,23 @@ export default {
       product_name: "",
       page: 1,
       columns: [
-        { label: "ID", prop: "id" },
-        { label: "产品名", prop: "product_name" },
-        { label: "component模式定义复杂列", component: operation },
+        { slot: "checkbox" },
+        { label: "id", prop: "id" },
+        { label: "产品", prop: "name" },
+        { label: "复杂列(component模式)", component: operation },
         { slot: "operationBtn" }
       ],
       tableData: [],
       totalSize: 0,
-      loading: false
+      tableLoading: false
     };
   },
   methods: {
     search() {
       this.tableData = [
-        { id: "1", product_name: "产品A" },
-        { id: "2", product_name: "产品B" },
-        { id: "3", product_name: "产品C" }
+        { id: "1", name: "产品A" },
+        { id: "2", name: "产品B" },
+        { id: "3", name: "产品C" }
       ];
       this.totalSize = 3;
     },
@@ -89,17 +102,25 @@ export default {
       this.page = page;
       this.handleSearch();
     },
-    click(row) {
-      console.log(row);
+    click() {
+      this.$notify({
+        title: "提示",
+        message: "slot模式列",
+        type: "success"
+      });
     },
     msg(m) {
-      console.log(m);
+      this.$notify({
+        title: "提示",
+        message: m,
+        type: "success"
+      });
     }
   },
   created() {
     this.$on("msg", this.msg);
   },
-  activated() {
+  mounted() {
     this.search();
   }
 };

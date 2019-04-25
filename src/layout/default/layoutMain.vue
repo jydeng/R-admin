@@ -1,29 +1,51 @@
 <template>
   <el-main>
     <transition :name="transitionName">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </transition>
+    <el-button
+      type="text"
+      class="close"
+      title="关闭"
+      v-if="showClose"
+      @click="close"
+    >
+      <i class="fa fa-close"></i>
+    </el-button>
   </el-main>
 </template>
 <script>
 export default {
   name: "layoutMain",
   data() {
-    return { transitionName: "" };
+    return {
+      transitionName: "",
+      home: "/home"
+    };
+  },
+  computed: {
+    showClose() {
+      return this.home !== this.$route.fullPath;
+    }
   },
   watch: {
     //使用watch 监听$router的变化
-    $route(to, from) {
-      //如果to索引大于from索引,判断为前进状态,反之则为后退状态
-      if (to.meta.index > from.meta.index) {
-        //设置动画名称
-        this.transitionName = "slide-right";
-      } else {
-        //设置动画名称
-        this.transitionName = "slide-left";
+    $route: {
+      handler: function(to, from) {
+        //如果to索引大于from索引,判断为前进状态,反之则为后退状态
+        if (to.meta.index > (from.meta.index || 0)) {
+          //设置动画名称
+          this.transitionName = "slide-right";
+        } else {
+          //设置动画名称
+          this.transitionName = "slide-left";
+        }
       }
+    }
+  },
+  methods: {
+    close() {
+      this.$router.push("/");
     }
   }
 };
@@ -32,10 +54,17 @@ export default {
 @import "../../style/mixin.scss";
 .el-main {
   position: relative;
-  margin: 10px;
-  padding: 5px 10px;
+  margin: 15px;
+  padding: 5px;
   overflow-x: hidden;
   @include card;
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 9px;
+    z-index: 9;
+  }
 }
 
 // 路由动画

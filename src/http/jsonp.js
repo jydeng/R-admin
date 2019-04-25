@@ -2,11 +2,12 @@ import jsonp from "jsonp";
 
 /**
  * 生成jsonp Promise
- * @param {string} url jsonp服务完整地址，自行拼接参数
+ * @param {string} url 远程服务器地址
+ * @param {object} params 查询参数
  */
-export default url => {
+export default (url, params) => {
   return new Promise((resolve, reject) => {
-    jsonp(url, {}, (err, data) => {
+    jsonp(url, { param: params }, (err, data) => {
       if (err) {
         reject(err);
       } else {

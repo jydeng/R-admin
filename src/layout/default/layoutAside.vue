@@ -17,7 +17,7 @@
             &nbsp;
             <span>{{ m.name }}</span>
           </template>
-          <el-menu-item-group :title="`---${m.name}---`">
+          <el-menu-item-group :title="m.name">
             <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">{{
               c.name
             }}</el-menu-item>
@@ -51,9 +51,9 @@ export default {
     }
   },
   watch: {
-    "$route.path": {
-      handler: function() {
-        this.activeMenu = /(\/[a-zA-Z0-9]*)*/.exec(this.$route.path).shift();
+    $route: {
+      handler: function(to) {
+        this.activeMenu = to.fullPath;
       },
       immediate: true
     }
@@ -89,14 +89,8 @@ export default {
             {
               id: "1-4",
               icon: "fa fa-html5",
-              name: "参数输入框",
-              url: "/home/params"
-            },
-            {
-              id: "1-5",
-              icon: "fa fa-clone",
-              name: "操纵剪贴板",
-              url: "/home/clipboard"
+              name: "其他",
+              url: "/home/other"
             }
           ]
         },

@@ -1,15 +1,14 @@
 <template>
   <div>
-    <el-row class="searchPart" :gutter="10">
-      <el-col :md="6" :sm="24">
-        <el-button type="primary" plain @click="handleWrite"
-          >尝试写入编辑器</el-button
-        >
-        <el-button type="primary" plain @click="handleRead"
-          >尝试读取编辑器</el-button
-        >
+    <iSearchPart>
+      <el-col :md="24" :sm="24">
+        <el-button type="primary" plain @click="doc">官方文档</el-button>
+        <el-button type="primary" plain @click="initEditor">初始化</el-button>
+        <el-button type="primary" plain @click="write">写入</el-button>
+        <el-button type="primary" plain @click="writeHTML">写入HTML</el-button>
+        <el-button type="primary" plain @click="read">读取</el-button>
       </el-col>
-    </el-row>
+    </iSearchPart>
     <div ref="editor"></div>
   </div>
 </template>
@@ -27,22 +26,30 @@ export default {
     initEditor() {
       if (!this.editor) {
         this.editor = new E(this.$refs.editor);
+        // 回调函数给content赋值，实现数据的同步
         this.editor.customConfig.onchange = html => {
           this.content = html;
         };
         this.editor.create();
       }
     },
-    handleWrite() {
-      this.editor.txt.html(
-        "写入的内容,可以是html标签：<img style='width:100px;height:100px;' src='https://cn.vuejs.org/images/logo.png'/>"
-      );
+    doc() {
+      window.open("http://www.wangeditor.com/");
     },
-    handleRead() {
+    write() {
+      let content = "写入一些文本";
+      this.editor.txt.html(content);
+    },
+    writeHTML() {
+      let content =
+        "<img style='width:100px;height:100px;' src='https://cn.vuejs.org/images/logo.png'/>";
+      this.editor.txt.html(content);
+    },
+    read() {
       this.$message(`编辑器内容：${this.content}`);
     }
   },
-  activated() {
+  mounted() {
     this.initEditor();
   }
 };

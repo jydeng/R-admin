@@ -1,12 +1,13 @@
+import store from "@/store";
 import axios from "axios";
 import qs from "qs";
 import { Notification } from "element-ui";
-import store from "@/store";
+import NProgress from "nprogress";
 
 // axios实例
 const Axios = axios.create({
   baseURL: "/api",
-  timeout: 60000,
+  timeout: 5000,
   responseType: "json"
 });
 
@@ -16,12 +17,12 @@ Axios.interceptors.request.use(
     if (config.method === "post") {
       config.data = qs.stringify(config.data);
     }
-    config.headers["Authorization"] = store.state.user.token;
+    config.headers["Authorization"] = store.state.common.token;
+    NProgress.start();
     return config;
   },
   error => {
-    console.error(error);
-    return Promise.reject(error.message);
+    return Promise.reject(error);
   }
 );
 
@@ -34,23 +35,16 @@ Axios.interceptors.response.use(
     if (code) {
       switch (code) {
         case 200:
-          Notification({
-            message: res.data.msg,
-            type: "success",
-            duration: 2000
-          });
-          return Promise.resolve(res.data);
+          NProgress.done();
+          return Promise.resolve(res);
 
         default:
-          Notification({
-            message: res.data.msg,
-            type: "error",
-            duration: 2000
-          });
-          return Promise.reject(res.data.msg);
+          NProgress.done();
+          return Promise.reject(res);
       }
     } else {
-      return Promise.resolve(res.data);
+      NProgress.done();
+      return Promise.resolve(res);
     }
   },
   error => {
@@ -58,22 +52,78 @@ Axios.interceptors.response.use(
       case 400:
       case 401:
         Notification({
-          message: "登录超时，需要重新登录",
+          title: "提示",
+          message: "登录超时，请重新登录",
           type: "warning",
           duration: 2000
         });
 
         store.dispatch("user/logout");
-        return Promise.reject(error.message);
+        NProgress.done();
+        return Promise.reject(error);
       default:
         Notification({
+          title: "提示",
           message: "网络错误,请重试",
           type: "error",
           duration: 3000
         });
-        return Promise.reject(error.message);
+        NProgress.done();
+        return Promise.reject(error);
     }
   }
 );
 
-export default Axios;
+/**
+ * get
+ * @param {*} url 接口地址
+ * @param {*} params 参数
+ */
+export function get(url, params) {
+  return new Promise((resolve, reject) => {
+    Axios.get(url, {
+      params: params
+    })
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(error => {
+        Notification({
+          title: "提示",
+          message: error.data.msg,
+          type: "error",
+          duration: 2000
+        });
+        reject(error);
+      });
+  });
+}
+
+/**
+ * post
+ * @param {*} url 接口地址
+ * @param {*} data 数据
+ */
+export function post(url, data) {
+  return new Promise((resolve, reject) => {
+    Axios.post(url, data)
+      .then(res => {
+        Notification({
+          title: "提示",
+          message: res.data.msg,
+          type: "success",
+          duration: 2000
+        });
+        resolve(res.data);
+      })
+      .catch(error => {
+        Notification({
+          title: "提示",
+          message: error.data.msg,
+          type: "error",
+          duration: 2000
+        });
+        reject(error);
+      });
+  });
+}

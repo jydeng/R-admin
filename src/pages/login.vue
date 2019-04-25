@@ -26,9 +26,9 @@
     </el-col>
   </el-row>
 </template>
-
 <script>
 import { mapActions } from "vuex";
+// import { loginByApi } from "@/api/login";
 export default {
   name: "login",
   data() {
@@ -45,6 +45,7 @@ export default {
     handleLogin() {
       if (this.user.username.trim().length === 0) {
         this.$notify({
+          title: "提示",
           message: "请输入你的账号!",
           type: "warning"
         });
@@ -53,6 +54,7 @@ export default {
 
       if (this.user.password.trim().length === 0) {
         this.$notify({
+          title: "提示",
           message: "请输入你的密码!",
           type: "warning"
         });
@@ -64,6 +66,18 @@ export default {
         token: "admin",
         redirect: this.redirect || "/"
       });
+
+      // loginByApi(this.user.username, this.user.password)
+      //   .then(() => {
+      //     this.login({
+      //       user: { username: this.user.username, role: "admin" },
+      //       token: "admin",
+      //       redirect: this.redirect || "/"
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.error(error);
+      //   });
     }
   }
 };

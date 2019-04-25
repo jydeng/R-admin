@@ -1,4 +1,5 @@
 import "./style/index.scss";
+import "nprogress/nprogress.css";
 
 import Vue from "vue";
 import App from "./App.vue";

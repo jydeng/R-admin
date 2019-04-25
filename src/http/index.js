@@ -4,6 +4,7 @@ export default {
 
     contexts.keys().forEach(key => {
       if (key === "./index.js") return;
+
       let auxName = `$${/\w+/.exec(key).pop()}`;
       let auxEntity = contexts(key).default;
 

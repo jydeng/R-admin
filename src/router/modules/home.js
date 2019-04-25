@@ -23,16 +23,10 @@ export default [
         meta: { index: 3, requiresAuth: true }
       },
       {
-        path: "params",
-        name: "params",
-        component: () => import("@/views/params"),
+        path: "other",
+        name: "other",
+        component: () => import("@/views/other"),
         meta: { index: 4, requiresAuth: true }
-      },
-      {
-        path: "clipboard",
-        name: "clipboard",
-        component: () => import("@/views/clipboard"),
-        meta: { index: 5, requiresAuth: true }
       }
     ],
     beforeEnter(to, from, next) {
