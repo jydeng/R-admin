@@ -8,7 +8,8 @@ const externals = {
   "element-ui": "ELEMENT",
   echarts: "echarts",
   wangeditor: "wangEditor",
-  moment: "moment"
+  moment: "moment",
+  Bideo: "Bideo"
 };
 // 模块地址
 const cdn = {

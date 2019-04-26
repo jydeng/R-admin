@@ -2,7 +2,7 @@ import store from "@/store";
 export default [
   {
     path: "/home",
-    component: () => import("@/pages/home"),
+    component: () => import("@/layout/default"),
     children: [
       {
         path: "/",

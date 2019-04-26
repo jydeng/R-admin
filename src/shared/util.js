@@ -1,6 +1,9 @@
 import moment from "moment";
 
-// 数据类型
+/**
+ * 判断数据类型
+ * @param {*} obj 对象
+ */
 function typeOf(obj) {
   const toString = Object.prototype.toString;
   const map = {
@@ -18,7 +21,10 @@ function typeOf(obj) {
   return map[toString.call(obj)];
 }
 
-// deepCopy
+/**
+ * deepCopy
+ * @param {*} data 对象
+ */
 function deepCopy(data) {
   const t = typeOf(data);
   let o;
@@ -43,7 +49,10 @@ function deepCopy(data) {
   return o;
 }
 
-// uuid
+/**
+ * 生成uuid
+ * @param {*} len 位数
+ */
 function uuid(len = 32) {
   const $chars =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -55,7 +64,7 @@ function uuid(len = 32) {
   return str;
 }
 
-// 包装promsie,为async服务
+// 将promise async化
 function to(promise) {
   if (!promise || !Promise.prototype.isPrototypeOf(promise)) {
     return new Promise((resolve, reject) => {
@@ -73,7 +82,12 @@ function to(promise) {
     });
 }
 
-// 计算百分比
+/**
+ * 计算百分比
+ * @param {*} part 子项
+ * @param {*} whole 总数
+ * @param {*} digit 小数
+ */
 function percentage(part, whole, digit = 2) {
   if (parseFloat(part) > 0 && parseFloat(whole) > 0) {
     return `${((parseFloat(part) / parseFloat(whole)) * 100).toFixed(digit)}%`;
@@ -82,7 +96,12 @@ function percentage(part, whole, digit = 2) {
   }
 }
 
-// 计算平均值
+/**
+ * 计算平均值
+ * @param {*} part 子项
+ * @param {*} whole 总数
+ * @param {*} digit 小书
+ */
 function avg(part, whole, digit = 2) {
   if (parseFloat(part) > 0 && parseFloat(whole) > 0) {
     return `${(parseFloat(whole) / parseFloat(part)).toFixed(digit)}`;
@@ -91,7 +110,11 @@ function avg(part, whole, digit = 2) {
   }
 }
 
-// 格式化数字
+/**
+ * 格式化数字
+ * @param {*} num 数字
+ * @param {*} digit 小数
+ */
 function parseNum(num, digit = 2) {
   if (num) {
     return parseFloat(num).toFixed(digit);
@@ -100,14 +123,25 @@ function parseNum(num, digit = 2) {
   }
 }
 
-// 日期格式化
+/**
+ * 获取后几天的日期
+ * @param {*} days 天数
+ * @param {*} format 格式
+ */
 function fewDays(days, format = "YYYY-MM-DD") {
   return moment()
     .add(days, "days")
     .format(format);
 }
 
-// 翻译code
+/**
+ * 转化code
+ * @param {*} code code
+ * @param {*} dist 字典
+ * @param {*} miss 未命中则呈现
+ * @param {*} k 自定义key
+ * @param {*} v 自定义value
+ */
 function transCode(code, dist, miss = "未匹配", k = "key", v = "value") {
   if (dist.length === 0 || !code) {
     return miss;
@@ -122,6 +156,30 @@ function transCode(code, dist, miss = "未匹配", k = "key", v = "value") {
   }
 }
 
+/**
+ * Animate.CSS封装（已Promise化）
+ * @param {*} element dom或者查询字符串
+ * @param {*} animationName 动画类
+ */
+function animateCSS(element, animationName) {
+  return new Promise(resolve => {
+    let node;
+    // 判断是否是dom
+    if (typeOf(element) === "string") {
+      node = document.querySelector(element);
+    } else {
+      node = element;
+    }
+    node.classList.add("animated", animationName);
+    node.addEventListener("animationend", handleAnimationEnd);
+    function handleAnimationEnd() {
+      node.classList.remove("animated", animationName);
+      node.removeEventListener("animationend", handleAnimationEnd);
+      resolve();
+    }
+  });
+}
+
 export default {
   typeOf,
   deepCopy,
@@ -131,5 +189,6 @@ export default {
   avg,
   parseNum,
   fewDays,
-  transCode
+  transCode,
+  animateCSS
 };

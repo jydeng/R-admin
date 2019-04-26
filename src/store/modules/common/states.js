@@ -1,6 +1,7 @@
 const states = {
   themeColor: "#409EFF",
-  isCollapse: false
+  isCollapse: false,
+  fullScreen: false
 };
 
 export default states;

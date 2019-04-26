@@ -6,5 +6,8 @@ export default {
   },
   [Types.ASIDECOLLAPSE](state) {
     state.isCollapse = !state.isCollapse;
+  },
+  [Types.TOGGLEFULLSCREEN](state) {
+    state.fullScreen = !state.fullScreen;
   }
 };
