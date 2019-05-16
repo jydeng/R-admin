@@ -280,17 +280,22 @@ export default {
     }
   },
   mounted() {
-    // 初始化查询一次
-    this.search();
-    // 数据动画
-    this.numGrow(0, this.consume, 2, num => (this.consume = num));
-    this.numGrow(0, this.order.total, 1.5, num => (this.order.total = num));
-    this.numGrow(0, this.order.allow, 1.5, num => (this.order.allow = num));
-    this.numGrow(0, this.order.start, 1.5, num => (this.order.start = num));
-    this.numGrow(0, this.order.stop, 1.5, num => (this.order.stop = num));
+    setTimeout(() => {
+      // 初始化查询一次
+      this.search();
+      // 数据动画
+      this.numGrow(0, this.consume, 2, num => (this.consume = num));
+      this.numGrow(0, this.order.total, 1.5, num => (this.order.total = num));
+      this.numGrow(0, this.order.allow, 1.5, num => (this.order.allow = num));
+      this.numGrow(0, this.order.start, 1.5, num => (this.order.start = num));
+      this.numGrow(0, this.order.stop, 1.5, num => (this.order.stop = num));
+    }, 2000);
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.chart.resize);
+    if (this.chart !== null) {
+      window.removeEventListener("resize", this.chart.resize);
+      this.chart.dispose();
+    }
   }
 };
 </script>

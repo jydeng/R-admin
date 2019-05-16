@@ -2,7 +2,7 @@
   <div>
     <el-row class="item">
       <el-col :md="24" :sm="24">
-        <p class="desc">1、参数输入辅助框：</p>
+        <p class="desc">1.参数输入辅助框：</p>
         <element-params-input
           v-model="test"
           placeholder="请输入监控链地址"
@@ -11,7 +11,7 @@
     </el-row>
     <el-row class="item">
       <el-col :md="24" :sm="24">
-        <p class="desc">2、操纵剪贴板：</p>
+        <p class="desc">2.操纵剪贴板：</p>
         <el-input type="textarea" v-model="txt"></el-input>
         <el-button type="primary" plain class="cp">
           <i class="fa fa-clone"></i> 写入剪贴板
@@ -20,7 +20,7 @@
     </el-row>
     <el-row class="item">
       <el-col :md="24" :sm="24">
-        <p class="desc">3、图片上传方案（可自行输入地址）：</p>
+        <p class="desc">3.图片上传方案（可自行输入地址）：</p>
         <iUploadImg
           url="/upload"
           name="file"

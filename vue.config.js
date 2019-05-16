@@ -9,7 +9,8 @@ const externals = {
   echarts: "echarts",
   wangeditor: "wangEditor",
   moment: "moment",
-  Bideo: "Bideo"
+  Bideo: "Bideo",
+  BMap: "BMap"
 };
 // 模块地址
 const cdn = {
@@ -29,7 +30,8 @@ const cdn = {
       "https://cdn.bootcss.com/element-ui/2.7.0/index.js",
       "https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js",
       "https://cdn.bootcss.com/wangEditor/3.1.1/wangEditor.min.js",
-      "https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"
+      "https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js",
+      "http://api.map.baidu.com/api?v=2.0&ak=9ZER5K6vvqcTQY6MHKDRCUKan5IFDEsO"
     ]
   },
   build: {
@@ -48,7 +50,8 @@ const cdn = {
       "https://cdn.bootcss.com/element-ui/2.7.0/index.js",
       "https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js",
       "https://cdn.bootcss.com/wangEditor/3.1.1/wangEditor.min.js",
-      "https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"
+      "https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js",
+      "http://api.map.baidu.com/api?v=2.0&ak=9ZER5K6vvqcTQY6MHKDRCUKan5IFDEsO"
     ]
   }
 };

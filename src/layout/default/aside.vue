@@ -18,9 +18,9 @@
             <span>{{ m.name }}</span>
           </template>
           <el-menu-item-group :title="m.name">
-            <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">{{
-              c.name
-            }}</el-menu-item>
+            <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">
+              {{ c.name }}
+            </el-menu-item>
           </el-menu-item-group>
         </el-submenu>
 
@@ -66,7 +66,7 @@ export default {
         {
           id: "1",
           icon: "fa fa-puzzle-piece",
-          name: "功能",
+          name: "功能模块",
           child: [
             {
               id: "1-1",
@@ -88,6 +88,12 @@ export default {
             },
             {
               id: "1-4",
+              icon: "fa fa-map",
+              name: "百度地图",
+              url: "/home/map"
+            },
+            {
+              id: "1-5",
               icon: "fa fa-html5",
               name: "其他",
               url: "/home/other"
@@ -96,11 +102,23 @@ export default {
         },
         {
           id: "2",
+          icon: "fa fa-database",
+          name: "数据分析",
+          child: [
+            {
+              id: "2-1",
+              name: "今日买量人群分析",
+              url: "/home/crowdAnalysis"
+            }
+          ]
+        },
+        {
+          id: "3",
           icon: "fa fa-unlink",
           name: "错误页",
           child: [
             {
-              id: "2-1",
+              id: "3-1",
               name: "404",
               url: "/page404"
             }

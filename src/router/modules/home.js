@@ -27,6 +27,18 @@ export default [
         name: "other",
         component: () => import("@/views/other"),
         meta: { index: 4, requiresAuth: true }
+      },
+      {
+        path: "crowdAnalysis",
+        name: "crowdAnalysis",
+        component: () => import("@/views/crowdAnalysis"),
+        meta: { index: 5, requiresAuth: true }
+      },
+      {
+        path: "map",
+        name: "map",
+        component: () => import("@/views/map"),
+        meta: { index: 6, requiresAuth: true }
       }
     ],
     beforeEnter(to, from, next) {
