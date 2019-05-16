@@ -18,9 +18,9 @@
             <span>{{ m.name }}</span>
           </template>
           <el-menu-item-group :title="m.name">
-            <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">
-              {{ c.name }}
-            </el-menu-item>
+            <el-menu-item v-for="c in m.child" :index="c.url" :key="c.id">{{
+              c.name
+            }}</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
 
@@ -108,17 +108,34 @@ export default {
             {
               id: "2-1",
               name: "今日买量人群分析",
-              url: "/home/crowdAnalysis"
+              url: "/analysis/crowd"
             }
           ]
         },
         {
           id: "3",
+          icon: "fa fa-picture-o",
+          name: "Canvas&SVG",
+          child: [
+            {
+              id: "3-1",
+              name: "hello world",
+              url: "/canvas&svg/hello"
+            },
+            {
+              id: "3-2",
+              name: "变换文字",
+              url: "/canvas&svg/text"
+            }
+          ]
+        },
+        {
+          id: "9",
           icon: "fa fa-unlink",
           name: "错误页",
           child: [
             {
-              id: "3-1",
+              id: "9-1",
               name: "404",
               url: "/page404"
             }

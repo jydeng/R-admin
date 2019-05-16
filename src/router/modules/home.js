@@ -1,4 +1,3 @@
-import store from "@/store";
 export default [
   {
     path: "/home",
@@ -7,54 +6,33 @@ export default [
       {
         path: "/",
         name: "dashboard",
-        component: () => import("@/views/dashboard"),
+        component: () => import("@/views/home/dashboard"),
         meta: { index: 1, requiresAuth: true }
       },
       {
         path: "baseTable",
         name: "baseTable",
-        component: () => import("@/views/baseTable"),
+        component: () => import("@/views/home/baseTable"),
         meta: { index: 2, requiresAuth: true }
       },
       {
         path: "editor",
         name: "editor",
-        component: () => import("@/views/editor"),
+        component: () => import("@/views/home/editor"),
         meta: { index: 3, requiresAuth: true }
       },
       {
         path: "other",
         name: "other",
-        component: () => import("@/views/other"),
+        component: () => import("@/views/home/other"),
         meta: { index: 4, requiresAuth: true }
-      },
-      {
-        path: "crowdAnalysis",
-        name: "crowdAnalysis",
-        component: () => import("@/views/crowdAnalysis"),
-        meta: { index: 5, requiresAuth: true }
       },
       {
         path: "map",
         name: "map",
-        component: () => import("@/views/map"),
+        component: () => import("@/views/home/map"),
         meta: { index: 6, requiresAuth: true }
       }
-    ],
-    beforeEnter(to, from, next) {
-      // 是否登录校验
-      if (to.meta.requiresAuth) {
-        if (store.state.user.token) {
-          next();
-        } else {
-          next({
-            path: "/login",
-            query: { redirect: to.fullPath }
-          });
-        }
-      } else {
-        next();
-      }
-    }
+    ]
   }
 ];

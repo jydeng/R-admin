@@ -9,7 +9,7 @@
 <script>
 import echarts from "echarts";
 export default {
-  name: "crowdAnalysis",
+  name: "crowd",
   data() {
     return {
       chart: null

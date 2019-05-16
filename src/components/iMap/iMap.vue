@@ -1,5 +1,5 @@
 <template>
-  <div id="map" style="height:100%"></div>
+  <div id="iMap" style="height:100%"></div>
 </template>
 <script>
 import BMap from "BMap";
@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted() {
-    let map = new BMap.Map("map");
+    let map = new BMap.Map("iMap");
     let point = new BMap.Point(this.center.lng, this.center.lat);
     map.centerAndZoom(point, this.level);
     map.addControl(new BMap.MapTypeControl());

@@ -4,9 +4,5 @@
   </div>
 </template>
 <script>
-import iMap from "./iMap";
-export default {
-  name: "map",
-  components: { iMap }
-};
+export default {};
 </script>
