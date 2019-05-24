@@ -2,15 +2,7 @@
   <div>
     <i-searchPart>
       <el-col :md="6" :sm="24">
-        <el-date-picker
-          v-model="selectedDate"
-          format="yyyy 年 MM 月 dd 日"
-          value-format="yyyy-MM-dd"
-          type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :picker-options="pickerOptions"
-        ></el-date-picker>
+        <iDateRange v-model="selectedDate"></iDateRange>
       </el-col>
       <el-col :md="6" :sm="24">
         <el-input
@@ -70,11 +62,7 @@ export default {
   name: "baseTable",
   data() {
     return {
-      selectedDate: [this.$util.fewDays(-7), this.$util.fewDays(-1)],
-      pickerOptions: {
-        shortcuts: this.$element.dateShortcuts,
-        disabledDate: this.$element.now
-      },
+      selectedDate: ["", ""],
       product_name: "",
       page: 1,
       columns: [

@@ -60,16 +60,7 @@
 
     <el-row :gutter="20" class="dateRange">
       <el-col :sm="24" :md="8">
-        <el-date-picker
-          v-model="selectedDate"
-          format="yyyy 年 MM 月 dd 日"
-          value-format="yyyy-MM-dd"
-          type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :picker-options="pickerOptions"
-          @change="search"
-        ></el-date-picker>
+        <iDateRange v-model="selectedDate" @change="search"></iDateRange>
       </el-col>
       <el-col :sm="24" :md="4">
         <el-button> <i class="fa fa-fw fa-download"></i> 下载 </el-button>
@@ -107,11 +98,7 @@ export default {
   name: "dashboard",
   data() {
     return {
-      selectedDate: ["2019-01-02", "2019-01-10"],
-      pickerOptions: {
-        shortcuts: this.$element.dateShortcuts,
-        disabledDate: this.$element.now
-      },
+      selectedDate: ["", ""],
       columns: [
         { prop: "date", label: "日期" },
         { prop: "field1", label: "消耗" },
